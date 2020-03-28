@@ -1,4 +1,9 @@
 // Gets All global cases
+
+let allCaseNo = document.getElementById("allCaseNo");
+let recoveredCaseNo = document.getElementById("recoveredCaseNo");
+let deathCaseNo = document.getElementById("deathCaseNo");
+
 (async () => {
 	let data = await fetch("https://corona.lmao.ninja/all");
 
@@ -8,11 +13,7 @@
 	let allDeaths = all.deaths;
 	let allRecovered = all.recovered;
 
-	document.getElementById("allCasesNo").innerHTML = allCases;
-	document.getElementById("recoveredCasesNo").innerHTML = allRecovered;
-	document.getElementById("deathCasesNo").innerHTML = allDeaths;
-
-	console.log(allCases);
-	console.log(allDeaths);
-	console.log(allRecovered);
+	allCaseNo.innerText = allCases;
+	recoveredCaseNo.innerText = allRecovered;
+	deathCaseNo.innerText = allDeaths;
 })();
