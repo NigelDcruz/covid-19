@@ -1,57 +1,47 @@
-// Gets All global cases
+const countryInput = document.querySelector('.form-control'),
+    showData = document.getElementById('show__statistics'),
+    showDate = document.getElementById('Date'),
+    failMessage = document.getElementById('message'),
+    searchInput = document.getElementById('search');
 
-let allCaseNo = document.getElementById("allCaseNo");
-let recoveredCaseNo = document.getElementById("recoveredCaseNo");
-let deathCaseNo = document.getElementById("deathCaseNo");
 
-let covidChart = document.getElementById("covidCasesChart").getContext("2d");
 
-(async () => {
-	let data = await fetch("https://corona.lmao.ninja/all");
 
-	let all = await data.json();
+searchInput.addEventListener('click', () => {
 
-	let allCases = all.cases;
-	let allDeaths = all.deaths;
-	let allRecovered = all.recovered;
+    const countryName = countryInput.value;
+    const matchingName = () => {
+        return countryName.charAt(0).toUpperCase() + countryName.slice(1)
+    }
+    const finalName = matchingName();
 
-	allCaseNo.innerText = allCases;
-	recoveredCaseNo.innerText = allRecovered;
-	deathCaseNo.innerText = allDeaths;
+    fetch("https://api.covid19api.com/summary")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            data["Countries"].shift(0)
+            console.log(data)
+            data["Countries"].forEach(({ Country, NewConfirmed, TotalConfirmed, NewDeaths, TotalDeaths, NewRecovered, TotalRecovered }) => {
+                if (Country.toUpperCase() === finalName.toUpperCase()) {
+                    showData.innerHTML = `				
+				<td>${Country}</td>
+				<td>${TotalConfirmed}</td>
+				<td>${NewConfirmed}</td>
+				<td>${NewDeaths}</td>
+				<td>${TotalDeaths}</td>
+				<td>${NewRecovered}</td>
+				<td>${TotalRecovered}</td>
+				`;
+                    // failMessage.textContent = 'Country Found'
+                    const date = data["Date"];
+                    const newDate = date.slice(0, 10)
+                    console.log(newDate)
+                    showDate.textContent = `The Date of this Statistics (${newDate})`
+                } else {
+                    // failMessage.textContent = "Country Not Found"
+                }
+            })
 
-	//Covid Chart
-	let donut = new Chart(covidChart, {
-		// The type of chart we want to create
-		type: "doughnut",
+        })
 
-		// The data for our dataset
-		data: {
-			labels: ["All Cases", "Recovered Cases", "Death Cases"],
-			datasets: [
-				{
-					label: "Covid-19 Cases",
-					borderColor: "rgba(0,0,0)",
-					backgroundColor: [
-						"rgba(136,136,136,1)",
-						"rgba(0,255,0,1)",
-						"rgba(255,0,0,1)"
-					],
-					data: [allCases, allRecovered, allDeaths]
-				}
-			]
-		},
-		options: {
-			//changing legends styles
-			legend: {
-				labels: {
-					fontSize: 25,
-					padding: 50
-				}
-			},
-			//tooltips styles
-			tooltips: {
-				bodyFontSize: 30
-			}
-		}
-	});
-})();
+})

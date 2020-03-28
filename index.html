@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Covid-19 Update</title>
-		<link rel="stylesheet" href="css/style.min.css" />
-	</head>
-	<body>
-		<h1>Covid Cases</h1>
 
-		<section class="cases">
-			<div class="allCases box">
-				<h2>All cases</h2>
-				<p id="allCaseNo"></p>
-			</div>
-			<div class="recoveredCases box">
-				<h2>Recovered cases</h2>
-				<p id="recoveredCaseNo"></p>
-			</div>
-			<div class="deathCases box">
-				<h2>Death cases</h2>
-				<p id="deathCaseNo"></p>
-			</div>
-		</section>
-		<section>
-			<canvas id="covidCasesChart"></canvas>
-		</section>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Covid-19 Update</title>
+    <link rel="stylesheet" href="css/style.min.css" />
+    <script src="./js/main.js" defer></script>
+</head>
 
-		<script src="js/library/jquery.min.js"></script>
-		<script src="js/library/bootstrap.min.js"></script>
-		<script src="js/library/aos.min.js"></script>
-		<script src="js/library/swiper.min.js"></script>
-		<script src="js/library/chartjs.min.js"></script>
-		<script src="js/main.js"></script>
-	</body>
+<body>
+    <h1> CoronaVirus Covid 19 </h1>
+
+    <div class="form-group">
+        <label for="country" class='d-block'>Enter the country Name </label>
+        <input type="text" style="width: 300px;" class="form-control d-inline" name="country" id="" aria-describedby="helpId" placeholder="Country name!">
+        <button id="search" class="d-inline btn btn-success">Search</button>
+        <small id="helpId" class="form-text text-muted">These statistics might be not 100% accurate </small>
+    </div>
+    </div>
+
+
+    <h1 id='message'></h1>
+    <h4 id='Date'>
+        </h1>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">County Name</th>
+                    <th scope="col">TotalConfirmed</th>
+                    <th scope="col">NewConfirmed</th>
+                    <th scope="col">NewDeaths</th>
+                    <th scope="col">TotalDeaths</th>
+                    <th scope="col">NewRecovered</th>
+                    <th scope="col">TotalRecovered</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="show__statistics">
+
+                </tr>
+            </tbody>
+        </table>
+        <script src="js/library/jquery.min.js"></script>
+        <script src="js/library/bootstrap.min.js"></script>
+        <script src="js/library/aos.min.js"></script>
+        <script src="js/library/swiper.min.js"></script>
+</body>
+
 </html>
