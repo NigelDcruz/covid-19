@@ -1,47 +1,51 @@
-const countryInput = document.querySelector('.form-control'),
-    showData = document.getElementById('show__statistics'),
-    showDate = document.getElementById('Date'),
-    failMessage = document.getElementById('message'),
-    searchInput = document.getElementById('search');
+const countryInput = document.querySelector(".form-control"),
+    showData = document.getElementById("show__statistics"),
+    showDate = document.getElementById("Date"),
+    failMessage = document.getElementById("message"),
+    searchInput = document.getElementById("search");
 
-
-
-
-searchInput.addEventListener('click', () => {
-
+searchInput.addEventListener("click", () => {
     const countryName = countryInput.value;
-    const matchingName = () => {
-        return countryName.charAt(0).toUpperCase() + countryName.slice(1)
-    }
-    const finalName = matchingName();
-
     fetch("https://api.covid19api.com/summary")
         .then(response => response.json())
         .then(data => {
-            console.log(data)
-            data["Countries"].shift(0)
-            console.log(data)
-            data["Countries"].forEach(({ Country, NewConfirmed, TotalConfirmed, NewDeaths, TotalDeaths, NewRecovered, TotalRecovered }) => {
-                if (Country.toUpperCase() === finalName.toUpperCase()) {
-                    showData.innerHTML = `				
-				<td>${Country}</td>
-				<td>${TotalConfirmed}</td>
-				<td>${NewConfirmed}</td>
-				<td>${NewDeaths}</td>
-				<td>${TotalDeaths}</td>
-				<td>${NewRecovered}</td>
-				<td>${TotalRecovered}</td>
-				`;
-                    // failMessage.textContent = 'Country Found'
-                    const date = data["Date"];
-                    const newDate = date.slice(0, 10)
-                    console.log(newDate)
-                    showDate.textContent = `The Date of this Statistics (${newDate})`
-                } else {
-                    // failMessage.textContent = "Country Not Found"
+            const date = data["Date"];
+            const newDate = date.slice(0, 10);
+            showDate.textContent = `The Date of this Statistics (${newDate})`;
+        });
+
+    fetch("https://corona.lmao.ninja/countries")
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(
+                ({
+                    country,
+                    todayCases,
+                    cases,
+                    countryInfo,
+                    todayDeaths,
+                    deaths,
+                    active,
+                    recovered
+                }) => {
+                    if (country.toUpperCase() === countryName.toUpperCase()) {
+                        showData.innerHTML = `				
+				<td>${country} <img style= width = '30px' ; height = '30px' src="${
+              countryInfo.flag
+            }"/></td>
+				<td>${cases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+				<td>${todayCases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+				<td>${todayDeaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+				<td>${deaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+				<td>${active.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+				<td>${recovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+                `;
+
+                        // failMessage.textContent = "Country Found";
+                    } else {
+                        // failMessage.textContent = "Country Not Found";
+                    }
                 }
-            })
-
-        })
-
-})
+            );
+        });
+});
