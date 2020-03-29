@@ -4,7 +4,8 @@ const countryInput = document.querySelector(".form-control"),
     failMessage = document.getElementById("message"),
     searchInput = document.getElementById("search");
 
-searchInput.addEventListener("click", () => {
+searchInput.addEventListener("click", (e) => {
+
     const countryName = countryInput.value;
     fetch("https://api.covid19api.com/summary")
         .then(response => response.json())
