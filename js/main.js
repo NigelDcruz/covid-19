@@ -36,7 +36,7 @@ searchInput.addEventListener("click", () => {
 				<td>${cases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
 				<td>${todayCases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
 				<td>${todayDeaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
-				<td>${deaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+				<td style="color: #F48FB1;">${deaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
 				<td>${active.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
 				<td>${recovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
                 `;
