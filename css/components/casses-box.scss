@@ -1,0 +1,21 @@
+.cases {
+    .box {
+        text-align: center;
+        margin-top: 5px;
+        padding: 5px 0px 1px;
+        margin-bottom: 15px;
+        box-shadow: 0px 0px 1px 0px #000;
+
+        &.allCases {
+            border: 1px solid $neutral;
+        }
+
+        &.recoveredCases {
+            border: 1px solid $green;
+        }
+
+        &.deathCases {
+            border: 1px solid $red;
+        }
+    }
+}

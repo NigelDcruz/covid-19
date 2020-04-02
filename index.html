@@ -1,42 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Covid-19 Update</title>
-		<link rel="stylesheet" href="css/style.min.css" />
-	</head>
-	<body>
-		<h1>Covid Cases</h1>
 
-		<section class="cases">
-			<div class="allCases box">
-				<h2>All cases</h2>
-				<p id="allCaseNo">Loading..</p>
-			</div>
-			<div class="recoveredCases box">
-				<h2>Recovered cases</h2>
-				<p id="recoveredCaseNo">Loading..</p>
-			</div>
-			<div class="deathCases box">
-				<h2>Death cases</h2>
-				<p id="deathCaseNo">Loading..</p>
-			</div>
-		</section>
-		<section>
-			<div
-				class="chart-container"
-				style="position: relative; height:300px;margin:0 auto;"
-			>
-				<canvas id="covidCasesChart"></canvas>
-			</div>
-		</section>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Covid-19 Update</title>
+	<link rel="stylesheet" href="css/style.min.css" />
+</head>
 
-		<script src="js/library/jquery.min.js"></script>
-		<script src="js/library/bootstrap.min.js"></script>
-		<script src="js/library/aos.min.js"></script>
-		<script src="js/library/swiper.min.js"></script>
-		<script src="js/library/chartjs.min.js"></script>
-		<script src="js/main.js"></script>
-	</body>
+<body>
+
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<h1 class="text-center mt-4 mb-5">Covid-19 Update</h1>
+			</div>
+		</div>
+	</div>
+
+
+	<section class="cases">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<form class="form-inline">
+						<div class="form-group mx-sm-3 mb-2">
+							<label for="countryName" class="sr-only">Country</label>
+							<input type="password" class="form-control" id="countryName"
+								placeholder="Enter Country Name">
+						</div>
+						<button type="submit" class="btn btn-primary mb-2">Search Country</button>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="text-center">Global cases around the world</h2>
+				</div>
+				<div class="col-sm-4">
+					<div class="allCases box">
+						<h3>Total cases</h3>
+						<p id="allCaseNo" class="color-neutral">Loading..</p>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="recoveredCases box">
+						<h3>Recovered</h3>
+						<p id="recoveredCaseNo" class="color-green">Loading..</p>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="deathCases box">
+						<h3>Dead</h3>
+						<p id="deathCaseNo" class="color-red">Loading..</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</section>
+	<section>
+		<div class="chart-container" style="position: relative; height:300px;margin:0 auto;">
+			<canvas id="covidCasesChart"></canvas>
+		</div>
+	</section>
+
+	<script src="js/library/jquery.min.js"></script>
+	<script src="js/library/bootstrap.min.js"></script>
+	<script src="js/library/aos.min.js"></script>
+	<script src="js/library/swiper.min.js"></script>
+	<script src="js/library/chartjs.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
+
 </html>
