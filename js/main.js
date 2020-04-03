@@ -273,6 +273,9 @@ async function renderNewData(country) {
 
 submitCountry.addEventListener("click", () => {
 
+	if(selectCountry.value == 'All'){
+		return;
+	}
 	// clearChart();
 	renderNewData(selectCountry.value);
 });
