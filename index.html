@@ -25,18 +25,6 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
-					<form class="form-inline">
-						<div class="form-group mx-sm-3 mb-2">
-							<label for="countryName" class="sr-only">Country</label>
-							<input type="password" class="form-control" id="countryName"
-								placeholder="Enter Country Name">
-						</div>
-						<button type="submit" class="btn btn-primary mb-2">Search Country</button>
-					</form>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12">
 					<h2 class="text-center">Cases around the world</h2>
 				</div>
 				<div class="col-sm-4">
@@ -66,8 +54,19 @@
 	<section class="mt-5 mb-5">
 		<div class="container">
 			<div class="row">
+				<div class="col-sm-12 text-center">
+					<form class="form-inline">
+						<div class="form-group mx-sm-3 mb-2">
+							<label for="countryName" class="sr-only">Country</label>
+							<select name="selectCountry" id="selectCountry"></select>
+						</div>
+						<button id="submitCountry" type="button" class="btn btn-primary mb-2">Search Country</button>
+					</form>
+				</div>
+			</div>
+			<div class="row">
 				<div class="col-sm-12">
-					<div class="chart-container" style="position: relative; height:300px;margin:0 auto;">
+					<div id="chart-container" class="chart-container" style="position: relative; height:300px;margin:0 auto;">
 						<canvas id="covidCasesChart"></canvas>
 					</div>
 				</div>
