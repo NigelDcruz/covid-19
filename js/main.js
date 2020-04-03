@@ -137,6 +137,25 @@ async function fetchAndPopulateCountries() {
 		selectCountry.appendChild(option);
 	}
 
+	// Sorting array based on the countries
+	function compare(a, b) {
+		
+		// Use toUpperCase() to ignore character casing
+		const bandA = a.country.toUpperCase();
+		const bandB = b.country.toUpperCase();
+	  
+		let comparison = 0;
+		if (bandA > bandB) {
+		  comparison = 1;
+		} else if (bandA < bandB) {
+		  comparison = -1;
+		}
+
+		return comparison;
+	  }
+
+	all.sort(compare);
+
 	all.forEach(data => {
 		populateCountries(data.country);
 	});
