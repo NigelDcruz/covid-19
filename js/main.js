@@ -13,7 +13,7 @@ let LoadingDiv = document.getElementById("LoadingDiv");
 
 // Get the CovidChart canvas element
 let chartContainer = document.getElementById("chart-container");
-let covidChart = document.getElementById("covidCasesChart").getContext("2d");
+
 
 // Helper Functions ================================================================
 
@@ -37,7 +37,8 @@ let handleReplaceAllCasesValues = (all, recovered, death) => {
 // Init Chart
 
 function initChart(all,recovered,death) {
-
+	clearChart();
+	let covidChart = document.getElementById("covidCasesChart").getContext("2d");
 	//Covid Chart
 	let donut = new Chart(covidChart, {
 		// The type of chart we want to create
