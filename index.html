@@ -12,7 +12,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
-				<h1 class="text-center mt-4 mb-5">Covid-19 Today!</h1>
+				<h1 class="text-center mt-4 mb-5">Covid-19 Update!</h1>
 			</div>
 		</div>
 	</div>
@@ -21,8 +21,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
-					<h2 class="text-center">Cases around the world</h2>
+					<h4 class="text-center">Cases around the world</h4>
 				</div>
+			</div>
+			<div class="row">
 				<div class="col-sm-4">
 					<div class="allCases box">
 						<h3>Total cases</h3>
@@ -42,6 +44,7 @@
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</section>
 	<!-- Graph -->
@@ -49,7 +52,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 text-center">
-					<form class="form-inline">
+					<h4>Search by Country</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 text-center">
+					<form class="form-inline d-flex justify-content-center">
 						<div class="form-group mx-sm-3 mb-2">
 							<label for="countryName" class="sr-only">Country</label>
 							<select name="selectCountry" id="selectCountry"></select>
@@ -76,24 +84,27 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
-					<table class="table">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">Country</th>
-								<th scope="col">Total</th>
-								<th scope="col">Recovered</th>
-								<th scope="col">Dead</th>
-							</tr>
-						</thead>
-						<tbody id="table-row">
-							<!-- <tr id="LoadingDiv">
-								<td>Loading..</td>
-								<td>Loading..</td>
-								<td>Loading..</td>
-								<td>Loading..</td>
-							</tr> -->
-						</tbody>
-					</table>
+					<div class="table-responsive-sm">
+						<table class="table">
+							<thead class="thead-dark">
+								<tr>
+									<th scope="col">Country</th>
+									<th scope="col">Total</th>
+									<th scope="col">Recovered</th>
+									<th scope="col">Dead</th>
+									<th scope="col">Added today</th>
+								</tr>
+							</thead>
+							<tbody id="table-row">
+								<!-- <tr id="LoadingDiv">
+									<td>Loading..</td>
+									<td>Loading..</td>
+									<td>Loading..</td>
+									<td>Loading..</td>
+								</tr> -->
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>

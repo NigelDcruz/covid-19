@@ -21,6 +21,22 @@ function numberWithCommas(x) {
 	return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
 
+//Calculats the sum of an array
+function sum(input) {
+
+	if (toString.call(input) !== "[object Array]")
+		return false;
+
+	var total = 0;
+	for (var i = 0; i < input.length; i++) {
+		if (isNaN(input[i])) {
+			continue;
+		}
+		total += Number(input[i]);
+	}
+	return total;
+}
+
 // ==================================================================================
 
 //Replace Valuse
@@ -36,7 +52,7 @@ let handleReplaceAllCasesValues = (all, recovered, death) => {
 
 // Init Chart
 
-function initChart(all,recovered,death) {
+function initChart(all, recovered, death, todayCases) {
 	clearChart();
 	let covidChart = document.getElementById("covidCasesChart").getContext("2d");
 	//Covid Chart
@@ -46,12 +62,12 @@ function initChart(all,recovered,death) {
 
 		// The data for our dataset
 		data: {
-			labels: ["All Cases", "Recovered Cases", "Death Cases"],
+			labels: ["All Cases", "Recovered Cases", "Death Cases", "Added Today"],
 			datasets: [{
-				label: "Covid-19 Cases",
+				label: "",
 				borderColor: "rgba(0,0,0)",
-				backgroundColor: ["#86c6be", "#a6c64c", "#c80003"],
-				data: [all, recovered, death]
+				backgroundColor: ["#86c6be", "#a6c64c", "#c80003", "blue"],
+				data: [all, recovered, death, todayCases]
 			}]
 		},
 		options: {
@@ -93,13 +109,12 @@ function initChart(all,recovered,death) {
 }
 
 // Render Chart
-let renderCovidChart = (all, recovered, death) => {
+let renderCovidChart = (all, recovered, death, todayCases) => {
 
 
 	setTimeout(() => {
 
-		initChart(all,recovered,death);
-		console.log('sdf',all,recovered,death);
+		initChart(all, recovered, death, todayCases);
 
 	}, 10);
 
@@ -130,7 +145,7 @@ function populateCountries(countryName) {
 
 // Populate Tables
 
-function populateTable(countryName, allCases, recovered, death) {
+function populateTable(countryName, allCases, recovered, death, todayCases) {
 
 	tableRow.innerHTML = "";
 	setTimeout(() => {
@@ -139,6 +154,7 @@ function populateTable(countryName, allCases, recovered, death) {
 								<td>${allCases}</td>
 								<td>${recovered}</td>
 								<td>${death}</td>
+								<td>${todayCases}</td>
 							</tr>`
 
 		// Appends 
@@ -155,15 +171,37 @@ function populateTable(countryName, allCases, recovered, death) {
 
 	let all = await data.json();
 
+	let data2 = await fetch(`https://corona.lmao.ninja/countries`);
+	let all2 = await data2.json();
+
+	console.log(all2);
+
 	let allCases = all.cases;
 	let allDeaths = all.deaths;
 	let allRecovered = all.recovered;
+	all2.todayCases
+
+	let addedTodayArray = [];
+	let addedToday;
+
+
+	// Calculate Casses Added today
+	all2.forEach(data => {
+		addedTodayArray.push(data.todayCases);
+		addedToday = sum(addedTodayArray);
+	});
+
+
+
 
 	//Replace the dom values
 	handleReplaceAllCasesValues(allCases, allRecovered, allDeaths);
 
 	//Draw Chart
-	renderCovidChart(allCases, allRecovered, allDeaths);
+	renderCovidChart(allCases, allRecovered, allDeaths,addedToday);
+
+	//Render Table
+	
 })();
 
 async function fetchAndPopulateCountries() {
@@ -173,6 +211,7 @@ async function fetchAndPopulateCountries() {
 
 	let all = await data.json();
 
+	// console.log(all);
 
 	// Sorting array based on the countries
 	function compare(a, b) {
@@ -198,10 +237,11 @@ async function fetchAndPopulateCountries() {
 		populateCountries(data.country);
 	});
 
+
 	// loops and populates Tables
 	all.forEach(data => {
 		populateCountries(data.country);
-		populateTable(data.country, data.cases, data.recovered, data.deaths);
+		populateTable(data.country, data.cases, data.recovered, data.deaths, data.todayCases);
 	});
 }
 
@@ -220,12 +260,13 @@ async function renderNewData(country) {
 	let allCases = all.cases;
 	let allDeaths = all.deaths;
 	let allRecovered = all.recovered;
+	let todayCases = all.todayCases;
 
 	//Draw Chart
-	renderCovidChart(allCases, allRecovered, allDeaths);
+	renderCovidChart(allCases, allRecovered, allDeaths, todayCases);
 
 	//Render Table
-	populateTable(countryName, allCases, allRecovered, allDeaths)
+	populateTable(countryName, allCases, allRecovered, allDeaths, todayCases)
 }
 
 //=========================================================================
