@@ -7,6 +7,10 @@ let deathCaseNo = document.getElementById("deathCaseNo");
 let selectCountry = document.getElementById("selectCountry");
 let submitCountry = document.getElementById("submitCountry");
 
+// Table
+let tableRow = document.getElementById("table-row");
+let LoadingDiv = document.getElementById("LoadingDiv");
+
 // Get the CovidChart canvas element
 let chartContainer = document.getElementById("chart-container");
 let covidChart = document.getElementById("covidCasesChart").getContext("2d");
@@ -30,8 +34,10 @@ let handleReplaceAllCasesValues = (all, recovered, death) => {
 	deathCaseNo.innerText = death;
 };
 
-// Renders All Cases
-let renderCovidChart = (all, recovered, death) => {
+// Init Chart
+
+function initChart(all,recovered,death) {
+
 	//Covid Chart
 	let donut = new Chart(covidChart, {
 		// The type of chart we want to create
@@ -40,14 +46,12 @@ let renderCovidChart = (all, recovered, death) => {
 		// The data for our dataset
 		data: {
 			labels: ["All Cases", "Recovered Cases", "Death Cases"],
-			datasets: [
-				{
-					label: "Covid-19 Cases",
-					borderColor: "rgba(0,0,0)",
-					backgroundColor: ["#86c6be", "#a6c64c", "#c80003"],
-					data: [all, recovered, death]
-				}
-			]
+			datasets: [{
+				label: "Covid-19 Cases",
+				borderColor: "rgba(0,0,0)",
+				backgroundColor: ["#86c6be", "#a6c64c", "#c80003"],
+				data: [all, recovered, death]
+			}]
 		},
 		options: {
 			responsive: true,
@@ -65,27 +69,39 @@ let renderCovidChart = (all, recovered, death) => {
 			tooltips: {
 				bodyFontSize: 25,
 				callbacks: {
-					label: function(tooltipItem) {
+					label: function (tooltipItem) {
 						return Number(tooltipItem.yLabel) + " Cases";
 					},
-					title: function() {}
+					title: function () {}
 				},
 				displayColors: false
 			},
 			scales: {
-				xAxes: [
-					{
-						gridLines: {
-							display: false
-						},
-						ticks: {
-							fontStyle: "bold"
-						}
+				xAxes: [{
+					gridLines: {
+						display: false
+					},
+					ticks: {
+						fontStyle: "bold"
 					}
-				]
+				}]
 			}
 		}
 	});
+
+}
+
+// Render Chart
+let renderCovidChart = (all, recovered, death) => {
+
+
+	setTimeout(() => {
+
+		initChart(all,recovered,death);
+		console.log('sdf',all,recovered,death);
+
+	}, 10);
+
 };
 
 // Clear Chart Container
@@ -94,6 +110,41 @@ let clearChart = () => {
 	chartContainer.innerHTML = "";
 	chartContainer.innerHTML = '<canvas id="covidCasesChart"></canvas>';
 };
+
+//Populate Countries List
+
+function populateCountries(countryName) {
+	// creates option tag
+	let option = document.createElement("option");
+
+	// Adds country name in option tag
+	let country = document.createTextNode(`${countryName}`);
+
+	// Appends country neme to the option tag
+	option.appendChild(country);
+
+	// Appends Option tag with list of countries to the select tag in the HTML file
+	selectCountry.appendChild(option);
+}
+
+// Populate Tables
+
+function populateTable(countryName, allCases, recovered, death) {
+
+	tableRow.innerHTML = "";
+	setTimeout(() => {
+		let tableTemplate = `<tr>
+								<td>${countryName}</td>
+								<td>${allCases}</td>
+								<td>${recovered}</td>
+								<td>${death}</td>
+							</tr>`
+
+		// Appends 
+		// tableRow.insertAdjacentHTML("afterend",tableTemplate);
+		tableRow.innerHTML += tableTemplate;
+	}, 0);
+}
 
 // ==================================================================================
 
@@ -121,43 +172,35 @@ async function fetchAndPopulateCountries() {
 
 	let all = await data.json();
 
-	console.log(all);
-
-	function populateCountries(countryName) {
-		// creates option tag
-		let option = document.createElement("option");
-
-		// Adds country name in option tag
-		let country = document.createTextNode(`${countryName}`);
-
-		// Appends country neme to the option tag
-		option.appendChild(country);
-
-		// Appends Option tag with list of countries to the select tag in the HTML file
-		selectCountry.appendChild(option);
-	}
 
 	// Sorting array based on the countries
 	function compare(a, b) {
-		
+
 		// Use toUpperCase() to ignore character casing
 		const bandA = a.country.toUpperCase();
 		const bandB = b.country.toUpperCase();
-	  
+
 		let comparison = 0;
 		if (bandA > bandB) {
-		  comparison = 1;
+			comparison = 1;
 		} else if (bandA < bandB) {
-		  comparison = -1;
+			comparison = -1;
 		}
 
 		return comparison;
-	  }
+	}
 
 	all.sort(compare);
 
+	// loops and populates options in the dropdown
 	all.forEach(data => {
 		populateCountries(data.country);
+	});
+
+	// loops and populates Tables
+	all.forEach(data => {
+		populateCountries(data.country);
+		populateTable(data.country, data.cases, data.recovered, data.deaths);
 	});
 }
 
@@ -172,18 +215,22 @@ async function renderNewData(country) {
 
 	console.log(all);
 
+	let countryName = all.country;
 	let allCases = all.cases;
 	let allDeaths = all.deaths;
 	let allRecovered = all.recovered;
 
 	//Draw Chart
 	renderCovidChart(allCases, allRecovered, allDeaths);
+
+	//Render Table
+	populateTable(countryName, allCases, allRecovered, allDeaths)
 }
 
 //=========================================================================
 
 submitCountry.addEventListener("click", () => {
-	console.log(selectCountry.value);
+
 	// clearChart();
 	renderNewData(selectCountry.value);
 });

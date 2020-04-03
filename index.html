@@ -1,180 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Covid-19 Update</title>
-		<link rel="stylesheet" href="css/style.min.css" />
-	</head>
 
-	<body>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Covid-19 Update</title>
+	<link rel="stylesheet" href="css/style.min.css" />
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<h1 class="text-center mt-4 mb-5">Covid-19 Today!</h1>
+			</div>
+		</div>
+	</div>
+	<!-- Global Cases -->
+	<section class="cases">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
-					<h1 class="text-center mt-4 mb-5">Covid-19 Today!</h1>
+					<h2 class="text-center">Cases around the world</h2>
+				</div>
+				<div class="col-sm-4">
+					<div class="allCases box">
+						<h3>Total cases</h3>
+						<p id="allCaseNo" class="color-neutral">Loading..</p>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="recoveredCases box">
+						<h3>Recovered</h3>
+						<p id="recoveredCaseNo" class="color-green">Loading..</p>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="deathCases box">
+						<h3>Dead</h3>
+						<p id="deathCaseNo" class="color-red">Loading..</p>
+					</div>
 				</div>
 			</div>
 		</div>
-
-		<section class="cases">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<h2 class="text-center">Cases around the world</h2>
-					</div>
-					<div class="col-sm-4">
-						<div class="allCases box">
-							<h3>Total cases</h3>
-							<p id="allCaseNo" class="color-neutral">Loading..</p>
+	</section>
+	<!-- Graph -->
+	<section class="mt-5 mb-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 text-center">
+					<form class="form-inline">
+						<div class="form-group mx-sm-3 mb-2">
+							<label for="countryName" class="sr-only">Country</label>
+							<select name="selectCountry" id="selectCountry"></select>
 						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="recoveredCases box">
-							<h3>Recovered</h3>
-							<p id="recoveredCaseNo" class="color-green">Loading..</p>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="deathCases box">
-							<h3>Dead</h3>
-							<p id="deathCaseNo" class="color-red">Loading..</p>
-						</div>
+						<button id="submitCountry" type="button" class="btn btn-primary mb-2">
+							Search Country
+						</button>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div id="chart-container" class="chart-container"
+						style="position: relative; height:300px;margin:0 auto;">
+						<canvas id="covidCasesChart"></canvas>
 					</div>
 				</div>
 			</div>
-		</section>
-		<section class="mt-5 mb-5">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12 text-center">
-						<form class="form-inline">
-							<div class="form-group mx-sm-3 mb-2">
-								<label for="countryName" class="sr-only">Country</label>
-								<select name="selectCountry" id="selectCountry"></select>
-							</div>
-							<button
-								id="submitCountry"
-								type="button"
-								class="btn btn-primary mb-2"
-							>
-								Search Country
+		</div>
+	</section>
+
+	<!-- Table -->
+	<section id="table">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<table class="table">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">Country</th>
+								<th scope="col">Total</th>
+								<th scope="col">Recovered</th>
+								<th scope="col">Dead</th>
+							</tr>
+						</thead>
+						<tbody id="table-row">
+							<!-- <tr id="LoadingDiv">
+								<td>Loading..</td>
+								<td>Loading..</td>
+								<td>Loading..</td>
+								<td>Loading..</td>
+							</tr> -->
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- FAQs -->
+	<section class="mt-5 mb-5 faq-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="text-center">FAQs</h2>
+				</div>
+			</div>
+
+			<div id="accordion">
+				<div class="card">
+					<div class="card-header" id="headingOne">
+						<h5 class="mb-0">
+							<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+								aria-expanded="true" aria-controls="collapseOne">
+								What is Covid-19?
 							</button>
-						</form>
+						</h5>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-12">
-						<div
-							id="chart-container"
-							class="chart-container"
-							style="position: relative; height:300px;margin:0 auto;"
-						>
-							<canvas id="covidCasesChart"></canvas>
+
+					<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+						<div class="card-body">
+							Coronavirus disease (COVID-19) is an infectious disease caused
+							by a new virus.
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
-
-		<section class="mt-5 mb-5 faq-section">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<h2 class="text-center">FAQs</h2>
+				<div class="card">
+					<div class="card-header" id="headingTwo">
+						<h5 class="mb-0">
+							<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+								aria-expanded="false" aria-controls="collapseTwo">
+								What are the symptoms of Covid-19?
+							</button>
+						</h5>
+					</div>
+					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+						<div class="card-body">
+							The disease causes respiratory illness (like the flu) with
+							symptoms such as a cough, fever, and in more severe cases,
+							difficulty breathing.
+						</div>
 					</div>
 				</div>
-
-				<div id="accordion">
-					<div class="card">
-						<div class="card-header" id="headingOne">
-							<h5 class="mb-0">
-								<button
-									class="btn btn-link"
-									data-toggle="collapse"
-									data-target="#collapseOne"
-									aria-expanded="true"
-									aria-controls="collapseOne"
-								>
-									What is Covid-19?
-								</button>
-							</h5>
-						</div>
-
-						<div
-							id="collapseOne"
-							class="collapse show"
-							aria-labelledby="headingOne"
-							data-parent="#accordion"
-						>
-							<div class="card-body">
-								Coronavirus disease (COVID-19) is an infectious disease caused
-								by a new virus.
-							</div>
-						</div>
+				<div class="card">
+					<div class="card-header" id="headingThree">
+						<h5 class="mb-0">
+							<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+								aria-expanded="false" aria-controls="collapseThree">
+								How dou you protect yourself?
+							</button>
+						</h5>
 					</div>
-					<div class="card">
-						<div class="card-header" id="headingTwo">
-							<h5 class="mb-0">
-								<button
-									class="btn btn-link collapsed"
-									data-toggle="collapse"
-									data-target="#collapseTwo"
-									aria-expanded="false"
-									aria-controls="collapseTwo"
-								>
-									What are the symptoms of Covid-19?
-								</button>
-							</h5>
-						</div>
-						<div
-							id="collapseTwo"
-							class="collapse"
-							aria-labelledby="headingTwo"
-							data-parent="#accordion"
-						>
-							<div class="card-body">
-								The disease causes respiratory illness (like the flu) with
-								symptoms such as a cough, fever, and in more severe cases,
-								difficulty breathing.
-							</div>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-header" id="headingThree">
-							<h5 class="mb-0">
-								<button
-									class="btn btn-link collapsed"
-									data-toggle="collapse"
-									data-target="#collapseThree"
-									aria-expanded="false"
-									aria-controls="collapseThree"
-								>
-									How dou you protect yourself?
-								</button>
-							</h5>
-						</div>
-						<div
-							id="collapseThree"
-							class="collapse"
-							aria-labelledby="headingThree"
-							data-parent="#accordion"
-						>
-							<div class="card-body">
-								You can protect yourself by washing your hands frequently,
-								avoiding touching your face, and avoiding close contact (1 meter
-								or 3 feet) with people who are unwell.
-							</div>
+					<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+						<div class="card-body">
+							You can protect yourself by washing your hands frequently,
+							avoiding touching your face, and avoiding close contact (1 meter
+							or 3 feet) with people who are unwell.
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
+	</section>
 
-		<script src="js/library/jquery.min.js"></script>
-		<script src="js/library/bootstrap.min.js"></script>
-		<script src="js/library/aos.min.js"></script>
-		<script src="js/library/swiper.min.js"></script>
-		<script src="js/library/chartjs.min.js"></script>
-		<script src="js/main.js"></script>
-	</body>
+	<script src="js/library/jquery.min.js"></script>
+	<script src="js/library/bootstrap.min.js"></script>
+	<script src="js/library/aos.min.js"></script>
+	<script src="js/library/swiper.min.js"></script>
+	<script src="js/library/chartjs.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
+
 </html>
