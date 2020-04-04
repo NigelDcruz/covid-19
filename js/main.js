@@ -37,6 +37,23 @@ function sum(input) {
 	return total;
 }
 
+// Sorting array based on the countries
+function compare(a, b) {
+
+	// Use toUpperCase() to ignore character casing
+	const bandA = a.country.toUpperCase();
+	const bandB = b.country.toUpperCase();
+
+	let comparison = 0;
+	if (bandA > bandB) {
+		comparison = 1;
+	} else if (bandA < bandB) {
+		comparison = -1;
+	}
+
+	return comparison;
+}
+
 // ==================================================================================
 
 //Replace Valuse
@@ -166,7 +183,7 @@ function populateTable(countryName, allCases, recovered, death, todayCases) {
 // ==================================================================================
 
 // Fetch data for all covid-19 cases
-(async () => {
+async function loadInitialData() {
 	let data = await fetch("https://corona.lmao.ninja/all");
 
 	let all = await data.json();
@@ -174,25 +191,21 @@ function populateTable(countryName, allCases, recovered, death, todayCases) {
 	let data2 = await fetch(`https://corona.lmao.ninja/countries`);
 	let all2 = await data2.json();
 
-	console.log(all2);
-
 	let allCases = all.cases;
 	let allDeaths = all.deaths;
 	let allRecovered = all.recovered;
-	all2.todayCases
+
 
 	// All countries
 	let addedTodayArray = [];
 	let addedToday;
 
-	let countryName2 = all2.country;
-	let allCases2 = all2.cases;
-	let allDeaths2 = all2.deaths;
-	let allRecovered2 = all2.recovered;
-	let todayCases2 = all2.todayCases;
+	all2.sort(compare);
 
 	// Calculate Casses Added today
 	all2.forEach(data => {
+		//Render Table
+		populateTable(data.country, data.cases, data.recovered, data.deaths, data.todayCases);
 		addedTodayArray.push(data.todayCases);
 		addedToday = sum(addedTodayArray);
 	});
@@ -201,10 +214,13 @@ function populateTable(countryName, allCases, recovered, death, todayCases) {
 	handleReplaceAllCasesValues(allCases, allRecovered, allDeaths);
 
 	//Draw Chart
-	renderCovidChart(allCases, allRecovered, allDeaths,addedToday);
+	renderCovidChart(allCases, allRecovered, allDeaths, addedToday);
 
-	
-})();
+
+
+};
+
+loadInitialData();
 
 async function fetchAndPopulateCountries() {
 	// fetch new data as per country
@@ -212,25 +228,6 @@ async function fetchAndPopulateCountries() {
 	let data = await fetch(`https://corona.lmao.ninja/countries`);
 
 	let all = await data.json();
-
-	// console.log(all);
-
-	// Sorting array based on the countries
-	function compare(a, b) {
-
-		// Use toUpperCase() to ignore character casing
-		const bandA = a.country.toUpperCase();
-		const bandB = b.country.toUpperCase();
-
-		let comparison = 0;
-		if (bandA > bandB) {
-			comparison = 1;
-		} else if (bandA < bandB) {
-			comparison = -1;
-		}
-
-		return comparison;
-	}
 
 	all.sort(compare);
 
@@ -243,10 +240,7 @@ async function fetchAndPopulateCountries() {
 	// loops and populates Tables
 	all.forEach((data, i) => {
 		populateCountries(data.country);
-		// console.log(i);
-		// if(i <= 20){
-			populateTable(data.country, data.cases, data.recovered, data.deaths, data.todayCases);
-		// }
+		populateTable(data.country, data.cases, data.recovered, data.deaths, data.todayCases);
 	});
 }
 
@@ -272,9 +266,9 @@ async function renderNewData(country) {
 	renderCovidChart(allCases, allRecovered, allDeaths, todayCases);
 
 	//Render Table
-	populateTable(countryName, allCases, allRecovered, allDeaths, todayCases)
+	populateTable(countryName, allCases, allRecovered, allDeaths, todayCases);
 
-	
+
 }
 
 //=========================================================================
@@ -282,11 +276,10 @@ async function renderNewData(country) {
 // Filter Results on click
 submitCountry.addEventListener("click", () => {
 
-	if(selectCountry.value == 'All'){
+	if (selectCountry.value == 'All') {
+		loadInitialData();
 		return;
 	}
 	// clearChart();
 	renderNewData(selectCountry.value);
 });
-
-

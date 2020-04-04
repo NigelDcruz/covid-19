@@ -18,3 +18,12 @@
 .color-red{
   color: $red;
 }
+
+h6{
+  white-space: normal;
+  color: #000000;
+  text-decoration: none;
+  &:focus{
+    text-decoration: none;
+  }
+}
