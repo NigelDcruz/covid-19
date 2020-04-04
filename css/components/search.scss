@@ -1,3 +1,32 @@
 #selectCountry {
-	padding: 10px 5px;
+	padding: 8px 5px;
+	border-radius: 4px;
+	width: 272px;
+	&:hover{
+		cursor: pointer;
+	}
+}
+
+
+.btn-info {
+    color: #fff;
+    background-color: $black;
+	border-color: $black;
+	&:hover,&:focus, &:active{
+		opacity: 0.8;
+		background-color: $black;
+		border-color: $black;	
+	}
+}
+
+.btn-info:not(:disabled):not(.disabled).active, .btn-info:not(:disabled):not(.disabled):active, .show>.btn-info.dropdown-toggle{
+	opacity: 0.8;
+		background-color: $black;
+		border-color: $black;
+}
+.btn-info.focus, .btn-info:focus {
+    box-shadow: none;
+}
+.btn-info:not(:disabled):not(.disabled).active:focus, .btn-info:not(:disabled):not(.disabled):active:focus, .show>.btn-info.dropdown-toggle:focus{
+	box-shadow: none;
 }

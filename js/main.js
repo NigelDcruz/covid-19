@@ -6,6 +6,7 @@ let deathCaseNo = document.getElementById("deathCaseNo");
 // Form inputs
 let selectCountry = document.getElementById("selectCountry");
 let submitCountry = document.getElementById("submitCountry");
+// let selectCountryOpptions = document.getElementsByClassName("selectCountryOpptions");
 
 // Table
 let tableRow = document.getElementById("table-row");
@@ -216,6 +217,16 @@ function populateCountries(countryName) {
 	// creates option tag
 	let option = document.createElement("option");
 
+	let attrClass = document.createAttribute("class"); // Create a "class" attribute
+	attrClass.value = "selectCountryOpptions"; // Set the value of the class attribute
+	option.setAttributeNode(attrClass); // Add the class attribute
+
+	let attrValue = document.createAttribute("value"); // Create a "class" attribute
+	attrValue.value = `${countryName}`; // Set the value of the class attribute
+	option.setAttributeNode(attrValue); // Add the class attribute
+
+	
+
 	// Adds country name in option tag
 	let country = document.createTextNode(`${countryName}`);
 
@@ -229,7 +240,7 @@ function populateCountries(countryName) {
 // Populate Tables
 
 function populateTable(countryName, allCases, recovered, death, todayCases) {
-	
+
 	tableRow.innerHTML = "";
 	setTimeout(() => {
 		let tableTemplate = `<tr>
@@ -350,6 +361,19 @@ submitCountry.addEventListener("click", () => {
 	// clearChart();
 	renderNewData(selectCountry.value);
 });
+
+// Filter results on select option
+$('#selectCountry').on('change', function() {
+	if (selectCountry.value == 'All') {
+		loadInitialData();
+		return;
+	}
+	// clearChart();
+	renderNewData(selectCountry.value);
+  });
+
+
+
 
 
 
