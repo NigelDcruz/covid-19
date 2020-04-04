@@ -55,9 +55,6 @@ function compare(a, b) {
 }
 
 
-// Set Date
-
-
 // ==================================================================================
 
 //Replace Valuse
@@ -70,6 +67,25 @@ let handleReplaceAllCasesValues = (all, recovered, death) => {
 	recoveredCaseNo.innerText = recovered;
 	deathCaseNo.innerText = death;
 };
+
+
+// Smooth Scroll to sections
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+			behavior: 'smooth'
+        });
+    });
+});
+
+
+//Navigation Active class toggle
+$(".navbar-nav .nav-link").on("click", function(){
+	$(".navbar-nav").find(".active").removeClass("active");
+	$(this).addClass("active");
+  });
 
 // Init Chart
 
