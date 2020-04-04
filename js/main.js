@@ -181,9 +181,15 @@ function populateTable(countryName, allCases, recovered, death, todayCases) {
 	let allRecovered = all.recovered;
 	all2.todayCases
 
+	// All countries
 	let addedTodayArray = [];
 	let addedToday;
 
+	let countryName2 = all2.country;
+	let allCases2 = all2.cases;
+	let allDeaths2 = all2.deaths;
+	let allRecovered2 = all2.recovered;
+	let todayCases2 = all2.todayCases;
 
 	// Calculate Casses Added today
 	all2.forEach(data => {
@@ -191,16 +197,12 @@ function populateTable(countryName, allCases, recovered, death, todayCases) {
 		addedToday = sum(addedTodayArray);
 	});
 
-
-
-
 	//Replace the dom values
 	handleReplaceAllCasesValues(allCases, allRecovered, allDeaths);
 
 	//Draw Chart
 	renderCovidChart(allCases, allRecovered, allDeaths,addedToday);
 
-	//Render Table
 	
 })();
 
@@ -239,14 +241,18 @@ async function fetchAndPopulateCountries() {
 
 
 	// loops and populates Tables
-	all.forEach(data => {
+	all.forEach((data, i) => {
 		populateCountries(data.country);
-		populateTable(data.country, data.cases, data.recovered, data.deaths, data.todayCases);
+		// console.log(i);
+		// if(i <= 20){
+			populateTable(data.country, data.cases, data.recovered, data.deaths, data.todayCases);
+		// }
 	});
 }
 
 fetchAndPopulateCountries();
 
+// Loads All Countries on click
 async function renderNewData(country) {
 	// fetch new data as per country
 
@@ -254,7 +260,7 @@ async function renderNewData(country) {
 
 	let all = await data.json();
 
-	console.log(all);
+	// console.log(all);
 
 	let countryName = all.country;
 	let allCases = all.cases;
@@ -267,10 +273,13 @@ async function renderNewData(country) {
 
 	//Render Table
 	populateTable(countryName, allCases, allRecovered, allDeaths, todayCases)
+
+	
 }
 
 //=========================================================================
 
+// Filter Results on click
 submitCountry.addEventListener("click", () => {
 
 	if(selectCountry.value == 'All'){
@@ -279,3 +288,5 @@ submitCountry.addEventListener("click", () => {
 	// clearChart();
 	renderNewData(selectCountry.value);
 });
+
+
