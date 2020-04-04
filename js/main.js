@@ -17,8 +17,43 @@ let chartContainer = document.getElementById("chart-container");
 
 // Helper Functions ================================================================
 
-function numberWithCommas(x) {
-	return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+
+function numberWithCommas(amount) {
+	var delimiter = ","; // replace comma if desired
+
+	amount = amount + '.00'
+
+	var a = amount.split('.', 2)
+	var d = a[1];
+	var i = parseInt(a[0]);
+	if (isNaN(i)) {
+		return '';
+	}
+	var minus = '';
+	if (i < 0) {
+		minus = '-';
+	}
+	i = Math.abs(i);
+	var n = new String(i);
+	var a = [];
+	while (n.length > 3) {
+		var nn = n.substr(n.length - 3);
+		a.unshift(nn);
+		n = n.substr(0, n.length - 3);
+	}
+	if (n.length > 0) {
+		a.unshift(n);
+	}
+	n = a.join(delimiter);
+	if (d.length < 1) {
+		amount = n;
+	} else {
+		amount = n + '.' + d;
+	}
+	amount = minus + amount;
+
+	var a = amount.split('.', 2)
+	return a[0];
 }
 
 //Calculats the sum of an array
@@ -72,20 +107,20 @@ let handleReplaceAllCasesValues = (all, recovered, death) => {
 // Smooth Scroll to sections
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
+	anchor.addEventListener('click', function (e) {
+		e.preventDefault();
+		document.querySelector(this.getAttribute('href')).scrollIntoView({
 			behavior: 'smooth'
-        });
-    });
+		});
+	});
 });
 
 
 //Navigation Active class toggle
-$(".navbar-nav .nav-link").on("click", function(){
+$(".navbar-nav .nav-link").on("click", function () {
 	$(".navbar-nav").find(".active").removeClass("active");
 	$(this).addClass("active");
-  });
+});
 
 // Init Chart
 
@@ -101,6 +136,7 @@ function initChart(all, recovered, death, todayCases) {
 		data: {
 			labels: ["All Cases", "Recovered Cases", "Death Cases", "Added Today"],
 			datasets: [{
+				barPercentage: 0.5,
 				label: "",
 				borderColor: "rgba(0,0,0)",
 				backgroundColor: ["#86c6be", "#a6c64c", "#c80003", "blue"],
@@ -110,7 +146,7 @@ function initChart(all, recovered, death, todayCases) {
 		options: {
 			responsive: true,
 			maintainAspectRatio: false,
-
+			Bar: 0.8,
 			//changing legends styles
 			legend: {
 				labels: {
@@ -124,16 +160,26 @@ function initChart(all, recovered, death, todayCases) {
 				bodyFontSize: 25,
 				callbacks: {
 					label: function (tooltipItem) {
-						return Number(tooltipItem.yLabel) + " Cases";
+
+						// console.log()
+						return numberWithCommas(tooltipItem.yLabel);
 					},
 					title: function () {}
 				},
 				displayColors: false
 			},
 			scales: {
-				xAxes: [{
+				// xAxes: [{
+				// 	gridLines: {
+				// 		display: false
+				// 	},
+				// 	ticks: {
+				// 		fontStyle: "bold"
+				// 	}
+				// }],
+				yAxes: [{
 					gridLines: {
-						display: false
+						display: false,
 					},
 					ticks: {
 						fontStyle: "bold"
@@ -183,15 +229,15 @@ function populateCountries(countryName) {
 // Populate Tables
 
 function populateTable(countryName, allCases, recovered, death, todayCases) {
-
+	
 	tableRow.innerHTML = "";
 	setTimeout(() => {
 		let tableTemplate = `<tr>
 								<td>${countryName}</td>
-								<td>${allCases}</td>
-								<td>${recovered}</td>
-								<td>${death}</td>
-								<td>${todayCases}</td>
+								<td>${numberWithCommas(allCases)}</td>
+								<td>${numberWithCommas(recovered)}</td>
+								<td>${numberWithCommas(death)}</td>
+								<td>${numberWithCommas(todayCases)}</td>
 							</tr>`
 
 		// Appends 
@@ -242,7 +288,6 @@ async function loadInitialData() {
 
 };
 
-loadInitialData();
 
 async function fetchAndPopulateCountries() {
 	// fetch new data as per country
@@ -266,7 +311,7 @@ async function fetchAndPopulateCountries() {
 	});
 }
 
-fetchAndPopulateCountries();
+//=========================================================================
 
 // Loads All Countries on click
 async function renderNewData(country) {
@@ -293,7 +338,7 @@ async function renderNewData(country) {
 
 }
 
-//=========================================================================
+
 
 // Filter Results on click
 submitCountry.addEventListener("click", () => {
@@ -305,3 +350,9 @@ submitCountry.addEventListener("click", () => {
 	// clearChart();
 	renderNewData(selectCountry.value);
 });
+
+
+
+loadInitialData();
+
+fetchAndPopulateCountries();
