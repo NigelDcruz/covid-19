@@ -1,0 +1,10 @@
+header {
+    height: 56px;
+}
+
+.aln-right {
+    @media screen and (min-width: 768px) {
+        display: flex;
+        justify-content: end;
+    }
+}

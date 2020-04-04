@@ -18,6 +18,9 @@
 .color-red{
   color: $red;
 }
+.bg-red{
+  background-color: $red;
+}
 
 h6{
   white-space: normal;
@@ -26,4 +29,16 @@ h6{
   &:focus{
     text-decoration: none;
   }
+}
+
+h1{
+  
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 20px 0px;
+}
+
+p.lastUpdate{
+  text-align: center;
+    color: #ffffff96;
 }

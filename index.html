@@ -9,15 +9,43 @@
 </head>
 
 <body>
-	<div class="container">
+	<header>
+		<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#">Covid-19</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse aln-right" id="navbarNavDropdown">
+			  <ul class="navbar-nav">
+				<li class="nav-item active">
+				  <a class="nav-link" href="#All">Global Cases </a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" href="#Search">Search by Country</a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" href="#Graph">Graph</a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" href="#Table">Table</a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" href="#FAQ">FAQs</a>
+				</li>
+			  </ul>
+			</div>
+		  </nav>
+	</header>
+	<div class="container bg-red mt-5 mb-5">
 		<div class="row">
 			<div class="col-sm-12">
-				<h1 class="text-center mt-4 mb-5">Covid-19 Update!</h1>
+				<h1 class="text-center">Covid-19 Latest Update!</h1>
+				<p class="lastUpdate">Last updated on: <span id="lastUpdated">Loading..</span> </p>
 			</div>
 		</div>
 	</div>
 	<!-- Global Cases -->
-	<section class="cases">
+	<section class="cases" id="All">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
@@ -48,7 +76,7 @@
 		</div>
 	</section>
 	<!-- Graph -->
-	<section class="mt-5 mb-5">
+	<section class="mt-5 mb-5" id="Search">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 text-center">
@@ -70,7 +98,7 @@
 					</form>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row" id="Graph">
 				<div class="col-sm-12">
 					<div id="chart-container" class="chart-container"
 						style="position: relative; height:300px;margin:0 auto;">
@@ -82,7 +110,7 @@
 	</section>
 
 	<!-- Table -->
-	<section id="table">
+	<section id="table" id="Table">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
@@ -114,7 +142,7 @@
 
 
 	<!-- FAQs -->
-	<section class="mt-5 mb-5 faq-section">
+	<section class="mt-5 mb-5 faq-section" id="FAQ">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">

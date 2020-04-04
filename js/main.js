@@ -54,6 +54,10 @@ function compare(a, b) {
 	return comparison;
 }
 
+
+// Set Date
+
+
 // ==================================================================================
 
 //Replace Valuse
@@ -196,6 +200,7 @@ async function loadInitialData() {
 	let allRecovered = all.recovered;
 
 
+
 	// All countries
 	let addedTodayArray = [];
 	let addedToday;
@@ -216,7 +221,8 @@ async function loadInitialData() {
 	//Draw Chart
 	renderCovidChart(allCases, allRecovered, allDeaths, addedToday);
 
-
+	var date = new Date(all.updated);
+	document.getElementById("lastUpdated").innerHTML = date.toString();
 
 };
 
