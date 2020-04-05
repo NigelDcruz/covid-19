@@ -213,6 +213,14 @@ let clearChart = () => {
 //Populate Countries List
 
 function populateCountries(countryName) {
+
+	// console.log( $('option').length == 210);
+
+	if($('option').length == 210){
+		return;
+	}
+
+
 	// creates option tag
 	let option = document.createElement("option");
 
@@ -300,6 +308,12 @@ async function loadInitialData() {
 	var date = new Date(all.updated);
 	document.getElementById("lastUpdated").innerHTML = date.toString();
 
+	// loops and populates options in the dropdown
+	all2.forEach(data => {
+		populateCountries(data.country);
+	});
+	
+
 };
 
 
@@ -312,10 +326,6 @@ async function fetchAndPopulateCountries() {
 
 	all.sort(compare);
 
-	// loops and populates options in the dropdown
-	all.forEach(data => {
-		populateCountries(data.country);
-	});
 
 
 	// loops and populates Tables
@@ -385,4 +395,6 @@ $('#selectCountry').on('change', function() {
 
 loadInitialData();
 
-fetchAndPopulateCountries();
+// fetchAndPopulateCountries();
+
+
