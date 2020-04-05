@@ -320,7 +320,6 @@ async function fetchAndPopulateCountries() {
 
 	// loops and populates Tables
 	all.forEach((data, i) => {
-		populateCountries(data.country);
 		populateTable(data.country, data.cases, data.recovered, data.deaths, data.todayCases);
 	});
 }
