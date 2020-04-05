@@ -1,0 +1,15 @@
+footer{
+    background-color: $black;
+    color: #fff;
+    padding-top: 18px;
+    a{
+        text-decoration: none;
+        color: $green;
+        &:hover{
+            text-decoration: none;
+            color: $green;
+            opacity: 0.9;
+        }
+    }
+
+}

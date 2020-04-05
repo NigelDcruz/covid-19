@@ -1,14 +1,31 @@
 .card-header{
     background-color: $black;
     border-bottom: 1px solid $black;
+    display: flex;
+    justify-content: center;
+    padding: 0;
     h6{
         color: #ffffff;
         outline: none;
         text-decoration: none;
+        padding: 15px 25px;
     }
     .btn-link {
         font-weight: 400;
         color: transparent;
         background-color: transparent;
+    }
+    .btn{
+        width: 100%;
+        height: 100%;
+        padding: 0;
+    }
+}
+
+.card-body{
+    p{
+        text-align: center;
+        font-weight: 900;
+        font-size: 18px;
     }
 }

@@ -200,14 +200,7 @@ function initChart(all, recovered, death, todayCases) {
 
 // Render Chart
 let renderCovidChart = (all, recovered, death, todayCases) => {
-
-
-	setTimeout(() => {
-
-		initChart(all, recovered, death, todayCases);
-
-	}, 10);
-
+	initChart(all, recovered, death, todayCases);
 };
 
 // Clear Chart Container
