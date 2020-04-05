@@ -2,226 +2,244 @@
 <html lang="en">
 
 <head>
+
+	
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Covid-19 Update</title>
+	<meta property="og:title" content="Covid-19 Updates!">
+    <meta property="og:description" content="Website that tracks Covid-19 cases and helps prevent fake news.">
+    <meta property="og:image" content="./images/covid.png">
+    <meta name="twitter:card" content="Website that tracks Covid-19 cases and helps prevent fake news.">
+    <link rel="shortcut icon" type="image/png" href="./images/covid.png"/>
+	<title>Covid-19 Updates!</title>
+	<meta name="Description" content="Website that tracks Covid-19 cases and helps prevent fake news.">
 	<link rel="stylesheet" href="css/style.min.css" />
 </head>
 
 <body>
-	<header>
+	<header id="top">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="#">Covid-19</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-			  <span class="navbar-toggler-icon"></span>
+			<a class="navbar-brand" href="#top">
+				<img src="./images/covid.png" width="30" height="30" class="d-inline-block align-top" alt="">
+				Covid-19
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+				aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse aln-right" id="navbarNavDropdown">
-			  <ul class="navbar-nav">
-				<li class="nav-item active">
-				  <a class="nav-link" href="#All">Global Cases </a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link" href="#Search">Search by Country</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link" href="#table">Table</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link" href="#Graph">Graph</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link" href="#FAQ">FAQs</a>
-				</li>
-			  </ul>
+				<ul class="navbar-nav">
+					<li class="nav-item active">
+						<a class="nav-link" href="#All">Global Cases </a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#Search">Search by Country</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#table">Table</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#Graph">Graph</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#FAQ">FAQs</a>
+					</li>
+				</ul>
 			</div>
-		  </nav>
+		</nav>
 	</header>
-	<div class="container bg-red mt-5 mb-5">
-		<div class="row">
-			<div class="col-sm-12">
-				<h1 class="text-center">Covid-19 Latest Update!</h1>
-				<p class="lastUpdate">Last updated on: <span id="lastUpdated">Loading..</span> </p>
-			</div>
-		</div>
-	</div>
-	<!-- Global Cases -->
-	<section class="cases" id="All">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
-					<h4 class="text-center">Cases around the world</h4>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="allCases box">
-						<h3>Total cases</h3>
-						<p id="allCaseNo" class="color-neutral">Loading..</p>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="recoveredCases box">
-						<h3>Recovered</h3>
-						<p id="recoveredCaseNo" class="color-green">Loading..</p>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="deathCases box">
-						<h3>Dead</h3>
-						<p id="deathCaseNo" class="color-red">Loading..</p>
-					</div>
-				</div>
-			</div>
 
-		</div>
-	</section>
-	
+	<main>
 
-	<!-- Table -->
-	<section id="table">
-		<div class="container">
-			<div class="row mt-4 mb-sm-2 mb-md-4">
-				<div class="col-sm-12">
-					<p class="text-center info-title">Showing data for <strong><span id="dataFor">Loading..</span></strong> </p>
+		<section id="lastUpdatedSection">
+			<div class="container bg-red mt-5 mb-5">
+				<div class="row">
+					<div class="col-sm-12">
+						<h1 class="text-center">Covid-19 Latest Update!</h1>
+						<p class="lastUpdate">Last updated on: <span id="lastUpdated">Loading..</span> </p>
+					</div>
 				</div>
 			</div>
-			<div id="Search" class="row">
-				<div class="col-sm-5 text-center mb-4">
-					<form class="form-inline d-flex justify-content-center align-items-start">
-						<div class="form-group mx-sm-3 mb-2">
-							<label for="countryName" class="sr-only">Country</label>
-							<select class="mb-2" name="selectCountry" id="selectCountry">
-								<option value="All">All Countries</option>
-							</select>
+		</section>
+
+		<!-- Global Cases -->
+		<section class="cases" id="All">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<h4 class="text-center">Cases around the world</h4>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="allCases box">
+							<h3>Total cases</h3>
+							<p id="allCaseNo" class="color-neutral">Loading..</p>
 						</div>
-						<button id="submitCountry" type="button" class="btn btn-info mb-2">
-							Search Country
-						</button>
-					</form>
+					</div>
+					<div class="col-sm-4">
+						<div class="recoveredCases box">
+							<h3>Recovered</h3>
+							<p id="recoveredCaseNo" class="color-green">Loading..</p>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="deathCases box">
+							<h3>Dead</h3>
+							<p id="deathCaseNo" class="color-red">Loading..</p>
+						</div>
+					</div>
 				</div>
-				<div class="col-sm-7 text-center d-sm-block d-md-none">
-					<h4>Scroll table to view more</h4>
-				</div>
+
 			</div>
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="table-responsive-sm">
-						<table class="table table-hover table-dark table-bordered">
-							<thead class="thead">
-								<tr>
-									<th scope="col">Country</th>
-									<th scope="col">Total</th>
-									<th scope="col">Recovered</th>
-									<th scope="col">Dead</th>
-									<th scope="col">Added today</th>
-								</tr>
-							</thead>
-							<tbody id="table-row">
-								<!-- <tr id="LoadingDiv">
+		</section>
+
+		<!-- Table -->
+		<section id="table">
+			<div class="container">
+				<div class="row mt-4 mb-sm-2 mb-md-4">
+					<div class="col-sm-12">
+						<p class="text-center info-title">Showing data for <strong><span
+									id="dataFor">Loading..</span></strong> </p>
+					</div>
+				</div>
+				<div id="Search" class="row">
+					<div class="col-sm-5 text-center mb-4">
+						<form class="form-inline d-flex justify-content-center align-items-start">
+							<div class="form-group mx-sm-3 mb-2">
+								<label for="selectCountry" class="sr-only">Country</label>
+								<select class="mb-2" name="selectCountry" id="selectCountry">
+									<option value="All">All Countries</option>
+								</select>
+							</div>
+							<button id="submitCountry" type="button" class="btn btn-info mb-2">
+								Search Country
+							</button>
+						</form>
+					</div>
+					<div class="col-sm-7 text-center d-sm-block d-md-none">
+						<h4>Scroll table to view more</h4>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="table-responsive-sm">
+							<table class="table table-hover table-dark table-bordered">
+								<thead class="thead">
+									<tr>
+										<th scope="col">Country</th>
+										<th scope="col">Total</th>
+										<th scope="col">Recovered</th>
+										<th scope="col">Dead</th>
+										<th scope="col">Added today</th>
+									</tr>
+								</thead>
+								<tbody id="table-row">
+									<!-- <tr id="LoadingDiv">
 									<td>Loading..</td>
 									<td>Loading..</td>
 									<td>Loading..</td>
 									<td>Loading..</td>
 								</tr> -->
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-			<div class="row mt-5 mb-0">
-				<div class="col-sm-12">
-					<h4 class="text-center info-title"> Data By Graph</h4>
-				</div>
-			</div>
-			<div class="row" id="Graph">
-				<div class="col-sm-12">
-					<div id="chart-container" class="chart-container"
-						style="position: relative; height:300px;margin:0 auto;">
-						<p class="text-center">Loading Graph...</p>
-						<canvas id="covidCasesChart"></canvas>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-	<!-- FAQs -->
-	<section class="mt-5 mb-5 faq-section" id="FAQ">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
-					<h2 class="text-center">FAQs</h2>
-				</div>
-			</div>
-
-			<div id="accordion">
-				<div class="card">
-					<div class="card-header" id="headingOne">
-						<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
-							aria-expanded="true" aria-controls="collapseOne">
-							<h6 class="mb-0">
-								What is Covid-19?
-							</h6>
-						</button>
-					</div>
-
-					<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-						<div class="card-body">
-							<p>
-								Coronavirus disease (COVID-19) is an infectious disease caused
-								by a new virus.
-							</p>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
-				<div class="card">
-					<div class="card-header" id="headingTwo">
-						<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
-							aria-expanded="false" aria-controls="collapseTwo">
-							<h6 class="mb-0">
-								What are the symptoms of Covid-19?
-							</h6>
-						</button>
-					</div>
-					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-						<div class="card-body">
-							<p> The disease causes respiratory illness (like the flu) with
-								symptoms such as a cough, fever, and in more severe cases,
-								difficulty breathing.
-							</p>
-						</div>
+				<div class="row mt-5 mb-0">
+					<div class="col-sm-12">
+						<h4 class="text-center info-title"> Data By Graph</h4>
 					</div>
 				</div>
-				<div class="card">
-					<div class="card-header" id="headingThree">
-						<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
-							aria-expanded="false" aria-controls="collapseThree">
-							<h6 class="mb-0">
-								How do you protect yourself?
-							</h6>
-						</button>
-					</div>
-					<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-						<div class="card-body">
-							<p>
-								You can protect yourself by washing your hands frequently,
-								avoiding touching your face, and avoiding close contact (1 meter
-								or 3 feet) with people who are unwell.
-							</p>
+				<div class="row" id="Graph">
+					<div class="col-sm-12">
+						<div id="chart-container" class="chart-container"
+							style="position: relative; height:300px;margin:0 auto;">
+							<p class="text-center">Loading Graph...</p>
+							<canvas id="covidCasesChart"></canvas>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
 
-	<script src="js/library/jquery.min.js"></script>
-	<script src="js/library/bootstrap.min.js"></script>
-	<!-- <script src="js/library/aos.min.js"></script>
-	<script src="js/library/swiper.min.js"></script> -->
-	<script src="js/library/chartjs.min.js"></script>
-	<script src="js/main.js"></script>
+		<!-- FAQs -->
+		<section class="mt-5 mb-5 faq-section" id="FAQ">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<h2 class="text-center">FAQs</h2>
+					</div>
+				</div>
+
+				<div id="accordion">
+					<div class="card">
+						<div class="card-header" id="headingOne">
+							<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+								aria-expanded="true" aria-controls="collapseOne">
+								<h6 class="mb-0">
+									What is Covid-19?
+								</h6>
+							</button>
+						</div>
+
+						<div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+							data-parent="#accordion">
+							<div class="card-body">
+								<p>
+									Coronavirus disease (COVID-19) is an infectious disease caused
+									by a new virus.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="headingTwo">
+							<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+								aria-expanded="false" aria-controls="collapseTwo">
+								<h6 class="mb-0">
+									What are the symptoms of Covid-19?
+								</h6>
+							</button>
+						</div>
+						<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+							<div class="card-body">
+								<p> The disease causes respiratory illness (like the flu) with
+									symptoms such as a cough, fever, and in more severe cases,
+									difficulty breathing.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="headingThree">
+							<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+								aria-expanded="false" aria-controls="collapseThree">
+								<h6 class="mb-0">
+									How do you protect yourself?
+								</h6>
+							</button>
+						</div>
+						<div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+							data-parent="#accordion">
+							<div class="card-body">
+								<p>
+									You can protect yourself by washing your hands frequently,
+									avoiding touching your face, and avoiding close contact (1 meter
+									or 3 feet) with people who are unwell.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	<script src="js/library/all.min.js"></script>
+	<script src="js/main.min.js"></script>
+	<!-- <script src="js/main.js"></script> -->
 </body>
 
 </html>
