@@ -1,0 +1,14 @@
+.card-header{
+    background-color: $black;
+    border-bottom: 1px solid $black;
+    h6{
+        color: #ffffff;
+        outline: none;
+        text-decoration: none;
+    }
+    .btn-link {
+        font-weight: 400;
+        color: transparent;
+        background-color: transparent;
+    }
+}

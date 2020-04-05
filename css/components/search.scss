@@ -19,6 +19,10 @@
 	}
 }
 
+.form-group{
+	margin-left: 0px !important;
+}
+
 .btn-info:not(:disabled):not(.disabled).active, .btn-info:not(:disabled):not(.disabled):active, .show>.btn-info.dropdown-toggle{
 	opacity: 0.8;
 		background-color: $black;

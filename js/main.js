@@ -2,6 +2,7 @@
 let allCaseNo = document.getElementById("allCaseNo");
 let recoveredCaseNo = document.getElementById("recoveredCaseNo");
 let deathCaseNo = document.getElementById("deathCaseNo");
+let dataFor = document.getElementById("dataFor");
 
 // Form inputs
 let selectCountry = document.getElementById("selectCountry");
@@ -102,7 +103,12 @@ let handleReplaceAllCasesValues = (all, recovered, death) => {
 	allCaseNo.innerText = all;
 	recoveredCaseNo.innerText = recovered;
 	deathCaseNo.innerText = death;
+
 };
+
+let handleReplaceDataFor = (dataForText) =>{
+	dataFor.innerText = dataForText;
+}
 
 
 // Smooth Scroll to sections
@@ -261,6 +267,7 @@ function populateTable(countryName, allCases, recovered, death, todayCases) {
 
 // Fetch data for all covid-19 cases
 async function loadInitialData() {
+	let dataFor = 'All Countries'
 	let data = await fetch("https://corona.lmao.ninja/all");
 
 	let all = await data.json();
@@ -290,6 +297,9 @@ async function loadInitialData() {
 
 	//Replace the dom values
 	handleReplaceAllCasesValues(allCases, allRecovered, allDeaths);
+
+	//Replace Data For
+	handleReplaceDataFor(dataFor);
 
 	//Draw Chart
 	renderCovidChart(allCases, allRecovered, allDeaths, addedToday);
@@ -364,12 +374,16 @@ submitCountry.addEventListener("click", () => {
 
 // Filter results on select option
 $('#selectCountry').on('change', function() {
+	
 	if (selectCountry.value == 'All') {
+		let dataFor = 'All Countries'
 		loadInitialData();
+		handleReplaceDataFor(dataFor);
 		return;
 	}
-	// clearChart();
+	handleReplaceDataFor(selectCountry.value)
 	renderNewData(selectCountry.value);
+
   });
 
 

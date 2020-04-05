@@ -10,7 +10,7 @@
 
 <body>
 	<header>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<a class="navbar-brand" href="#">Covid-19</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			  <span class="navbar-toggler-icon"></span>
@@ -24,10 +24,10 @@
 				  <a class="nav-link" href="#Search">Search by Country</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link" href="#Graph">Graph</a>
+				  <a class="nav-link" href="#table">Table</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link" href="#table">Table</a>
+				  <a class="nav-link" href="#Graph">Graph</a>
 				</li>
 				<li class="nav-item">
 				  <a class="nav-link" href="#FAQ">FAQs</a>
@@ -75,20 +75,22 @@
 
 		</div>
 	</section>
-	<!-- Graph -->
-	<section class="mt-5 mb-5" id="Search">
+	
+
+	<!-- Table -->
+	<section id="table">
 		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 text-center">
-					<h4>Search by Country</h4>
+			<div class="row mt-4 mb-sm-2 mb-md-4">
+				<div class="col-sm-12">
+					<p class="text-center info-title">Showing data for <strong><span id="dataFor">Loading..</span></strong> </p>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-sm-12 text-center">
-					<form class="form-inline d-flex justify-content-center">
+			<div id="Search" class="row">
+				<div class="col-sm-5 text-center mb-4">
+					<form class="form-inline d-flex justify-content-center align-items-start">
 						<div class="form-group mx-sm-3 mb-2">
 							<label for="countryName" class="sr-only">Country</label>
-							<select name="selectCountry" id="selectCountry">
+							<select class="mb-2" name="selectCountry" id="selectCountry">
 								<option value="All">All Countries</option>
 							</select>
 						</div>
@@ -97,13 +99,10 @@
 						</button>
 					</form>
 				</div>
+				<div class="col-sm-7 text-center d-sm-block d-md-none">
+					<h4>Scroll table to view more</h4>
+				</div>
 			</div>
-		</div>
-	</section>
-
-	<!-- Table -->
-	<section id="table">
-		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="table-responsive-sm">
@@ -129,10 +128,16 @@
 					</div>
 				</div>
 			</div>
+			<div class="row mt-5 mb-0">
+				<div class="col-sm-12">
+					<h4 class="text-center info-title"> Data By Graph</h4>
+				</div>
+			</div>
 			<div class="row" id="Graph">
 				<div class="col-sm-12">
 					<div id="chart-container" class="chart-container"
 						style="position: relative; height:300px;margin:0 auto;">
+						<p class="text-center">Loading Graph...</p>
 						<canvas id="covidCasesChart"></canvas>
 					</div>
 				</div>
