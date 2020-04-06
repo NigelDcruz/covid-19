@@ -1,0 +1,33 @@
+.carousel-control-next-icon, .carousel-control-prev-icon{
+    background-size: 18px 16px;
+    background-color: $black;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+.carousel-control-next-icon{
+    background-position: 7px center;
+}
+.carousel-control-prev-icon{
+    background-position: 5px center;
+}
+
+.carousel-control-next, .carousel-control-prev{
+    opacity: 1;
+
+    &:hover{
+        opacity: 0.9;
+    }
+}
+
+.modal{
+    .modal-header{
+        background-color: $black;
+        color: #fff;
+    }
+    .close{
+        color: #fff;
+
+    }
+}
