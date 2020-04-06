@@ -34,3 +34,18 @@
 }
 
 }
+
+// search input
+#accordion_search_bar_container {
+
+    #accordion_search_bar {
+      display: block;
+      margin: 10px auto;
+      width: 100%;
+      padding: 7px 10px;
+      border: 1px solid $black;
+      border-radius: 25px;
+      outline: 0;
+    }
+  }
+  

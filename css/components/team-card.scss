@@ -1,13 +1,13 @@
 .team-card{
-    width: 300px;
+    width: 255px;
     box-shadow: 0px 0px 5px 0px #000;
     min-height: 240px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 20px auto;
-
-
+    background-color: $black;
+    color: #ffffff;
 .image{
     @extend .bg-cover;
     height: 100px;
@@ -17,4 +17,13 @@
 
     // background-size: ;
 }
+}
+
+.modal.show .modal-dialog{
+    -webkit-transform: translate(0, 5%);
+    transform: translate(2px, 5%);
+}
+
+.modal-footer{
+    background-color: $black;
 }

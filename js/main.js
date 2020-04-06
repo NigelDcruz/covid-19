@@ -106,10 +106,17 @@ let handleReplaceAllCasesValues = (all, recovered, death) => {
 
 };
 
-let handleReplaceDataFor = (dataForText) =>{
+let handleReplaceDataFor = (dataForText) => {
 	dataFor.innerText = dataForText;
 }
 
+//   Search FAQs Filter
+$("#accordion_search_bar").on("change keyup paste click", function () {
+	var value = $(this).val().toLowerCase();
+	$("#accordion .card").filter(function () {
+		$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	});
+});
 
 // Smooth Scroll to sections
 
@@ -198,6 +205,74 @@ function initChart(all, recovered, death, todayCases) {
 
 }
 
+function generateAnyChart(all, recovered, death, todayCases, type) {
+
+	clearChart();
+	let covidChart = document.getElementById("covidCasesChart").getContext("2d");
+	//Covid Chart
+	let chart = new Chart(covidChart, {
+		// The type of chart we want to create
+		type: `${type}`,
+
+		// The data for our dataset
+		data: {
+			labels: ["All Cases", "Recovered Cases", "Death Cases", "Added Today"],
+			datasets: [{
+				barPercentage: 0.5,
+				label: "",
+				borderColor: "rgba(0,0,0)",
+				backgroundColor: ["#86c6be", "#a6c64c", "#c80003", "blue"],
+				data: [all, recovered, death, todayCases]
+			}]
+		},
+		options: {
+			responsive: true,
+			maintainAspectRatio: false,
+			Bar: 0.8,
+			//changing legends styles
+			legend: {
+				labels: {
+					fontSize: 25,
+					padding: 20,
+					boxWidth: 0
+				}
+			},
+			//tooltips styles
+			tooltips: {
+				bodyFontSize: 25,
+				callbacks: {
+					label: function (tooltipItem) {
+
+						// console.log()
+						return numberWithCommas(tooltipItem.yLabel);
+					},
+					title: function () {}
+				},
+				displayColors: false
+			},
+			scales: {
+				// xAxes: [{
+				// 	gridLines: {
+				// 		display: false
+				// 	},
+				// 	ticks: {
+				// 		fontStyle: "bold"
+				// 	}
+				// }],
+				yAxes: [{
+					gridLines: {
+						display: false,
+					},
+					ticks: {
+						fontStyle: "bold"
+					}
+				}]
+			}
+		}
+	});
+
+}
+
 // Render Chart
 let renderCovidChart = (all, recovered, death, todayCases) => {
 	initChart(all, recovered, death, todayCases);
@@ -216,7 +291,7 @@ function populateCountries(countryName) {
 
 	// console.log( $('option').length == 210);
 
-	if($('option').length == 210){
+	if ($('option').length == 210) {
 		return;
 	}
 
@@ -232,7 +307,7 @@ function populateCountries(countryName) {
 	attrValue.value = `${countryName}`; // Set the value of the class attribute
 	option.setAttributeNode(attrValue); // Add the class attribute
 
-	
+
 
 	// Adds country name in option tag
 	let country = document.createTextNode(`${countryName}`);
@@ -312,27 +387,11 @@ async function loadInitialData() {
 	all2.forEach(data => {
 		populateCountries(data.country);
 	});
-	
+
 
 };
 
-
-async function fetchAndPopulateCountries() {
-	// fetch new data as per country
-
-	let data = await fetch(`https://corona.lmao.ninja/countries`);
-
-	let all = await data.json();
-
-	all.sort(compare);
-
-
-
-	// loops and populates Tables
-	all.forEach((data, i) => {
-		populateTable(data.country, data.cases, data.recovered, data.deaths, data.todayCases);
-	});
-}
+loadInitialData();
 
 //=========================================================================
 
@@ -375,8 +434,8 @@ submitCountry.addEventListener("click", () => {
 });
 
 // Filter results on select option
-$('#selectCountry').on('change', function() {
-	
+$('#selectCountry').on('change', function () {
+
 	if (selectCountry.value == 'All') {
 		let dataFor = 'All Countries'
 		loadInitialData();
@@ -386,15 +445,8 @@ $('#selectCountry').on('change', function() {
 	handleReplaceDataFor(selectCountry.value)
 	renderNewData(selectCountry.value);
 
-  });
+});
 
 
-
-
-
-
-loadInitialData();
-
-// fetchAndPopulateCountries();
 
 
