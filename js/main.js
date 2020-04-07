@@ -111,11 +111,35 @@ let handleReplaceDataFor = (dataForText) => {
 }
 
 //   Search FAQs Filter
-$("#accordion_search_bar").on("change keyup paste click", function () {
+$("#accordion_search_bar").on("keyup", function () {
 	var value = $(this).val().toLowerCase();
+
+	if(value.length <= 1){
+		$(this).removeClass('show');
+	}
+	
 	$("#accordion .card").filter(function () {
-		$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		console.log($(this).text().toLowerCase().indexOf(value) > -1);
+
+		if($(this).text().toLowerCase().indexOf(value) > -1){
+			
+			$(this).show().addClass('there');
+			
+		} else {
+			$(this).hide().removeClass('there');
+			
+		}
+		
+		// $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 	});
+
+	if($("#accordion .card.there").length < 1){
+		$('.noRelult').addClass('show')
+	}else{
+		$('.noRelult').removeClass('show');
+	}
+	
+	
 });
 
 // Smooth Scroll to sections
@@ -153,7 +177,7 @@ function initChart(all, recovered, death, todayCases) {
 				barPercentage: 0.5,
 				label: "",
 				borderColor: "rgba(0,0,0)",
-				backgroundColor: ["#86c6be", "#a6c64c", "#c80003", "blue"],
+				backgroundColor: ["#40ffc3", "#c9f941", "#f93030", "blue"],
 				data: [all, recovered, death, todayCases]
 			}]
 		},
@@ -327,10 +351,10 @@ function populateTable(countryName, allCases, recovered, death, todayCases) {
 	setTimeout(() => {
 		let tableTemplate = `<tr>
 								<td>${countryName}</td>
-								<td>${numberWithCommas(allCases)}</td>
-								<td>${numberWithCommas(recovered)}</td>
-								<td>${numberWithCommas(death)}</td>
-								<td>${numberWithCommas(todayCases)}</td>
+								<td class="color-neutral">${numberWithCommas(allCases)}</td>
+								<td class="color-green">${numberWithCommas(recovered)}</td>
+								<td class="color-red">${numberWithCommas(death)}</td>
+								<td class="color-today">${numberWithCommas(todayCases)}</td>
 							</tr>`
 
 		// Appends 
@@ -381,7 +405,25 @@ async function loadInitialData() {
 	renderCovidChart(allCases, allRecovered, allDeaths, addedToday);
 
 	var date = new Date(all.updated);
-	document.getElementById("lastUpdated").innerHTML = date.toString();
+
+	const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+	let year = date.getFullYear();
+	let month = monthNames[date.getMonth()];;
+	let todayDate = date.getDate();
+
+	let time = new Intl.DateTimeFormat('default',
+	{
+		hour12: true,
+		hour: 'numeric',
+		minute: 'numeric'
+	}).format(date);
+
+
+	document.getElementById("lastUpdated").innerHTML = `${todayDate } ${month } ${year} at ${time}`;
+
 
 	// loops and populates options in the dropdown
 	all2.forEach(data => {
@@ -423,15 +465,15 @@ async function renderNewData(country) {
 
 
 // Filter Results on click
-submitCountry.addEventListener("click", () => {
+// submitCountry.addEventListener("click", () => {
 
-	if (selectCountry.value == 'All') {
-		loadInitialData();
-		return;
-	}
-	// clearChart();
-	renderNewData(selectCountry.value);
-});
+// 	if (selectCountry.value == 'All') {
+// 		loadInitialData();
+// 		return;
+// 	}
+// 	// clearChart();
+// 	renderNewData(selectCountry.value);
+// });
 
 // Filter results on select option
 $('#selectCountry').on('change', function () {

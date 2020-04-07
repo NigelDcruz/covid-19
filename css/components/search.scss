@@ -1,7 +1,9 @@
 #selectCountry {
 	padding: 8px 5px;
 	border-radius: 4px;
-	width: 272px;
+	min-width: 80%;
+    width: 80%;
+    margin: auto;
 	&:hover{
 		cursor: pointer;
 	}

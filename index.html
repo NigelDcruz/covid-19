@@ -21,7 +21,7 @@
 
 <body>
 	<header id="top">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-dark">
 			<a class="navbar-brand" href="#top">
 				<img src="./images/covid-favicon.png" width="30" height="30" class="d-inline-block align-top" alt="">
 				Covid-19
@@ -55,11 +55,11 @@
 	<main>
 
 		<section id="lastUpdatedSection">
-			<div class="container bg-red mt-5 mb-5">
+			<div class="container bg-neutral mt-5 mb-5">
 				<div class="row">
 					<div class="col-sm-12">
-						<h1 class="text-center">Covid-19 Latest Update!</h1>
-						<p class="lastUpdate">Last updated on: <span id="lastUpdated">Loading..</span> </p>
+						<h1 class="text-center mb-2">Covid-19 Latest Update!</h1>
+						<p class="lastUpdate">Last updated on: <br> <span id="lastUpdated">Loading..</span> </p>
 					</div>
 				</div>
 			</div>
@@ -100,31 +100,36 @@
 		<!-- Table -->
 		<section id="table">
 			<div class="container">
+				<div id="Search" class="row">
+					<div class="col-sm-12 text-center mt-4 mb-0">
+						<!-- <button id="submitCountry" type="button" class="btn btn-info mb-2">
+							Search Country
+						</button> -->
+						<h6 class="mb-2">Search by Country.</h6>
+						<form class="form-inline d-flex justify-content-center align-items-start">
+							<div class="form-group mb-0">
+								<label for="selectCountry" class="sr-only">Country</label>
+								<select class="mb-0" name="selectCountry" id="selectCountry">
+									<option value="All">All Countries</option>
+								</select>
+							</div>
+
+						</form>
+					</div>
+
+				</div>
 				<div class="row mt-4 mb-sm-2 mb-md-4">
 					<div class="col-sm-12">
 						<p class="text-center info-title">Showing data for <strong><span
 									id="dataFor">Loading..</span></strong> </p>
 					</div>
 				</div>
-				<div id="Search" class="row">
-					<div class="col-sm-5 text-center mb-4">
-						<form class="form-inline d-flex justify-content-center align-items-start">
-							<div class="form-group mx-sm-3 mb-2">
-								<label for="selectCountry" class="sr-only">Country</label>
-								<select class="mb-2" name="selectCountry" id="selectCountry">
-									<option value="All">All Countries</option>
-								</select>
-							</div>
-							<button id="submitCountry" type="button" class="btn btn-info mb-2">
-								Search Country
-							</button>
-						</form>
-					</div>
-					<div class="col-sm-7 text-center d-sm-block d-md-none">
-						<h4>Scroll table to view more</h4>
-					</div>
-				</div>
 				<div class="row">
+					<div class="col-sm-12">
+						<div class="col-sm-12 text-center ">
+							<h6 class="mb-2">Scroll table to view more</h6>
+						</div>
+					</div>
 					<div class="col-sm-12">
 						<div class="table-responsive-sm">
 							<table class="table table-hover table-dark table-bordered">
@@ -171,14 +176,19 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12">
-						<h2 class="text-center">FAQs</h2>
+						<h2 class="text-center info-title">FAQs</h2>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-sm-12 mt-4 mb-2">
+					<div class="col-sm-12 mt-2 mb-0">
 						<div id="accordion_search_bar_container">
-							<input type="search" id="accordion_search_bar" placeholder="Search for a keyword here" />
+							<input type="search" id="accordion_search_bar" placeholder="Search for a quuestion . . ." />
 						</div>
+					</div>
+				</div>
+				<div class="row noRelult">
+					<div class="col-sm-12 text-center">
+						No result.
 					</div>
 				</div>
 				<div class="row">
@@ -592,8 +602,8 @@
 	</footer>
 
 	<script src="js/library/all.min.js"></script>
-	<script src="js/main.min.js"></script>
-	<!-- <script src="js/main.js"></script> -->
+	<!-- <script src="js/main.min.js"></script> -->
+	<script src="js/main.js"></script>
 </body>
 
 </html>
