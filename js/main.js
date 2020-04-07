@@ -3,6 +3,7 @@ let allCaseNo = document.getElementById("allCaseNo");
 let recoveredCaseNo = document.getElementById("recoveredCaseNo");
 let deathCaseNo = document.getElementById("deathCaseNo");
 let dataFor = document.getElementById("dataFor");
+let byGraphdata = document.getElementById("byGraphdata");
 
 // Form inputs
 let selectCountry = document.getElementById("selectCountry");
@@ -108,6 +109,7 @@ let handleReplaceAllCasesValues = (all, recovered, death) => {
 
 let handleReplaceDataFor = (dataForText) => {
 	dataFor.innerText = dataForText;
+	byGraphdata.innerText = dataForText;
 }
 
 //   Search FAQs Filter
@@ -344,13 +346,12 @@ function populateCountries(countryName) {
 }
 
 // Populate Tables
-
-function populateTable(countryName, allCases, recovered, death, todayCases) {
+function populateTable(countryName, allCases, recovered, death, todayCases, flagUrl) {
 
 	tableRow.innerHTML = "";
 	setTimeout(() => {
 		let tableTemplate = `<tr>
-								<td>${countryName}</td>
+								<td> <img src="${flagUrl}" alt="${countryName}"/>${countryName}</td>
 								<td class="color-neutral">${numberWithCommas(allCases)}</td>
 								<td class="color-green">${numberWithCommas(recovered)}</td>
 								<td class="color-red">${numberWithCommas(death)}</td>
@@ -379,7 +380,7 @@ async function loadInitialData() {
 	let allDeaths = all.deaths;
 	let allRecovered = all.recovered;
 
-
+	
 
 	// All countries
 	let addedTodayArray = [];
@@ -390,7 +391,7 @@ async function loadInitialData() {
 	// Calculate Casses Added today
 	all2.forEach(data => {
 		//Render Table
-		populateTable(data.country, data.cases, data.recovered, data.deaths, data.todayCases);
+		populateTable(data.country, data.cases, data.recovered, data.deaths, data.todayCases, data.countryInfo.flag );
 		addedTodayArray.push(data.todayCases);
 		addedToday = sum(addedTodayArray);
 	});
@@ -452,28 +453,17 @@ async function renderNewData(country) {
 	let allDeaths = all.deaths;
 	let allRecovered = all.recovered;
 	let todayCases = all.todayCases;
+	
 
 	//Draw Chart
 	renderCovidChart(allCases, allRecovered, allDeaths, todayCases);
 
 	//Render Table
-	populateTable(countryName, allCases, allRecovered, allDeaths, todayCases);
+	populateTable(countryName, allCases, allRecovered, allDeaths, todayCases, all.countryInfo.flag);
 
 
 }
 
-
-
-// Filter Results on click
-// submitCountry.addEventListener("click", () => {
-
-// 	if (selectCountry.value == 'All') {
-// 		loadInitialData();
-// 		return;
-// 	}
-// 	// clearChart();
-// 	renderNewData(selectCountry.value);
-// });
 
 // Filter results on select option
 $('#selectCountry').on('change', function () {
@@ -488,7 +478,3 @@ $('#selectCountry').on('change', function () {
 	renderNewData(selectCountry.value);
 
 });
-
-
-
-

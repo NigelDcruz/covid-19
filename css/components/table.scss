@@ -9,3 +9,28 @@
 #dataFor{
     color: $green;
 }
+
+td{
+    img{
+        width: 30px;
+        margin-right: 10px;
+        @media screen and (max-width:768px) {
+            width: 78px;
+        }
+    }
+}
+
+.table{
+    margin-bottom: 0;
+
+}
+
+.table-dark td, .table-dark th, .table-dark thead th {
+    border-color: #32383e;
+    vertical-align: middle;
+    
+    @media screen and (max-width:768px) {
+        text-align: center;
+    }
+
+}

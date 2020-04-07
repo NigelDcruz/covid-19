@@ -1,33 +1,47 @@
-.carousel-control-next-icon, .carousel-control-prev-icon{
-    background-size: 18px 16px;
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
     background-color: $black;
+    outline: none;
+    background-size: 18px 16px;
     height: 30px;
     width: 30px;
     border-radius: 50%;
+    border: 1px solid #fff;
 }
 
-.carousel-control-next-icon{
+.carousel-control-next-icon {
+    background-size: 17px 16px;
     background-position: 7px center;
 }
-.carousel-control-prev-icon{
+
+.carousel-control-prev-icon {
+    background-size: 16px 16px;
     background-position: 5px center;
 }
 
-.carousel-control-next, .carousel-control-prev{
+.carousel-control-next,
+.carousel-control-prev {
     opacity: 1;
 
-    &:hover{
+    &:hover {
         opacity: 0.9;
     }
 }
 
-.modal{
-    .modal-header{
+.modal {
+    .modal-header {
         background-color: $black;
-        color: #fff;
+        color: $green;
     }
-    .close{
+
+    .close {
         color: #fff;
 
+    }
+}
+
+.trigButton {
+    &:hover {
+        cursor: pointer;
     }
 }

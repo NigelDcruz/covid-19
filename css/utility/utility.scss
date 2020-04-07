@@ -67,7 +67,7 @@ p.info-title{
 
 
 .bg-neutral{
-  background: radial-gradient(circle at 20% 20%, #212529 25%, #313329 100%);
+  background: radial-gradient(circle at 20% 20%, $black 25%, $black 100%);
   box-shadow: 0.5rem 1.25rem 1.75rem 0 rgba(100,110,140,0.4);
   color: rgba(255,255,255,0.9);
 }
