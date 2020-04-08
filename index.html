@@ -4,606 +4,706 @@
 <head>
 
 
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta property="og:title" content="Covid-19 Updates!">
-	<meta property="og:description" content="Website that tracks Covid-19 cases and helps prevent fake news.">
-	<!-- <meta property="og:image" content="./images/covid.png"> -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta property="og:title" content="Covid-19 Updates!">
+<meta property="og:description" content="Website that tracks Covid-19 cases and helps prevent fake news.">
+<!-- <meta property="og:image" content="./images/covid.png"> -->
 
-	<link property="og:image:secure_url" href="./images/covid-favicon.png">
+<link property="og:image:secure_url" href="./images/covid-favicon.png">
 
-	<meta name="twitter:card" content="Website that tracks Covid-19 cases and helps prevent fake news.">
-	<link rel="shortcut icon" type="image/png" href="./images/covid-favicon.png" />
-	<title>Covid-19 Updates!</title>
-	<meta name="Description" content="Website that tracks Covid-19 cases and helps prevent fake news.">
-	<link rel="stylesheet" href="css/style.min.css" />
+<meta name="twitter:card" content="Website that tracks Covid-19 cases and helps prevent fake news.">
+<link rel="shortcut icon" type="image/png" href="./images/covid-favicon.png" />
+<title>Covid-19 Updates!</title>
+<meta name="Description" content="Website that tracks Covid-19 cases and helps prevent fake news.">
+<link rel="stylesheet" href="css/style.min.css" />
 </head>
 
 <body>
-	<header id="top">
-		<nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="#top">
-				<img src="./images/covid-favicon.png" width="30" height="30" class="d-inline-block align-top" alt="">
-				Covid-19
-			</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-				aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse aln-right" id="navbarNavDropdown">
-				<ul class="navbar-nav">
-					<li class="nav-item active">
-						<a class="nav-link" href="#All">Global Cases </a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#Search">Search by Country</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#table">Table</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#Graph">Graph</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#FAQ">FAQs</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
-	</header>
+<header id="top">
+<nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-dark">
+<a class="navbar-brand" href="#top">
+<img src="./images/covid-favicon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+Covid-19
+</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse aln-right" id="navbarNavDropdown">
+<ul class="navbar-nav">
+<li class="nav-item active">
+<a class="nav-link" href="#All">Global Cases </a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#Search">Search by Country</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#table">Table</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#Graph">Graph</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#FAQ">FAQs</a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
 
-	<main>
+<main>
 
-		<section id="lastUpdatedSection">
-			<div class="container bg-neutral mt-5 mb-5">
-				<div class="row">
-					<div class="col-sm-12">
-						<h1 class="text-center mb-2">Covid-19 Latest Update!</h1>
-						<p class="lastUpdate">Last updated on: <br> <span id="lastUpdated">Loading..</span> </p>
-					</div>
-				</div>
-			</div>
-		</section>
+<section id="lastUpdatedSection">
+<div class="container bg-neutral mt-5 mb-5">
+<div class="row">
+<div class="col-sm-12">
+<h1 class="text-center mb-2">Covid-19 Latest Update!</h1>
+<p class="lastUpdate">Last updated on: <br> <span id="lastUpdated">Loading..</span> </p>
+</div>
+</div>
+</div>
+</section>
 
-		<!-- Global Cases -->
-		<section class="cases" id="All">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<h4 class="text-center">Cases around the world</h4>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-4">
-						<div class="allCases box">
-							<h3>Total cases</h3>
-							<p id="allCaseNo" class="color-neutral">Loading..</p>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="recoveredCases box">
-							<h3>Recovered</h3>
-							<p id="recoveredCaseNo" class="color-green">Loading..</p>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="deathCases box">
-							<h3>Dead</h3>
-							<p id="deathCaseNo" class="color-red">Loading..</p>
-						</div>
-					</div>
-				</div>
+<!-- Global Cases -->
+<section class="cases" id="All">
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<h4 class="text-center">Cases around the world</h4>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4">
+<div class="allCases box">
+<h3>Total cases</h3>
+<p id="allCaseNo" class="color-neutral">Loading..</p>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="recoveredCases box">
+<h3>Recovered</h3>
+<p id="recoveredCaseNo" class="color-green">Loading..</p>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="deathCases box">
+<h3>Dead</h3>
+<p id="deathCaseNo" class="color-red">Loading..</p>
+</div>
+</div>
+</div>
 
-			</div>
-		</section>
+</div>
+</section>
 
-		<!-- Table -->
-		<section id="table">
-			<div class="container">
-				<div id="Search" class="row">
-					<div class="col-sm-12 text-center mt-4 mb-0">
-						<!-- <button id="submitCountry" type="button" class="btn btn-info mb-2">
-							Search Country
-						</button> -->
-						<h6 class="mb-2">Search by Country.</h6>
-						<form class="form-inline d-flex justify-content-center align-items-start">
-							<div class="form-group mb-0">
-								<label for="selectCountry" class="sr-only">Country</label>
-								<select class="mb-0" name="selectCountry" id="selectCountry">
-									<option value="All">All Countries</option>
-								</select>
-							</div>
+<!-- Table -->
+<section id="table">
+<div class="container">
+<div id="Search" class="row">
+<div class="col-sm-12 text-center mt-4 mb-0">
+<!-- <button id="submitCountry" type="button" class="btn btn-info mb-2">
+Search Country
+</button> -->
+<h6 class="mb-2">Search by Country.</h6>
+<form class="form-inline d-flex justify-content-center align-items-start">
+<div class="form-group mb-0">
+<label for="selectCountry" class="sr-only">Country</label>
+<select class="mb-0" name="selectCountry" id="selectCountry">
+<option value="All">All Countries</option>
+</select>
+</div>
 
-						</form>
-					</div>
+</form>
+</div>
 
-				</div>
-				<div class="row mt-4 mb-sm-2 mb-md-4">
-					<div class="col-sm-12">
-						<p class="text-center info-title">Showing data for <strong><span
-									id="dataFor">Loading..</span></strong> </p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="col-sm-12 text-center ">
-							<h6 class="mb-2">Scroll table to view more</h6>
-						</div>
-					</div>
-					<div class="col-sm-12">
-						<div class="table-responsive-sm">
-							<table class="table table-hover table-dark table-bordered">
-								<thead class="thead">
-									<tr>
-										<th scope="col">Country</th>
-										<th scope="col">Total</th>
-										<th scope="col">Recovered</th>
-										<th scope="col">Dead</th>
-										<th scope="col">Added today</th>
-									</tr>
-								</thead>
-								<tbody id="table-row">
-									<!-- <tr id="LoadingDiv">
-									<td>Loading..</td>
-									<td>Loading..</td>
-									<td>Loading..</td>
-									<td>Loading..</td>
-								</tr> -->
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-				<div class="row mt-5 mb-0">
-					<div class="col-sm-12">
-						<h4 class="text-center info-title">  Data for <span id="byGraphdata">Loading..</span> By Graph</h4>
-					</div>
-				</div>
-				<div class="row" id="Graph">
-					<div class="col-sm-12">
-						<div id="chart-container" class="chart-container"
-							style="position: relative; height:300px;margin:0 auto;">
-							<p class="text-center">Loading Graph...</p>
-							<canvas id="covidCasesChart"></canvas>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+</div>
+<div class="row mt-4 mb-sm-2 mb-md-4">
+<div class="col-sm-12">
+<p class="text-center info-title">Showing data for <strong><span
+id="dataFor">Loading..</span></strong> </p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div class="col-sm-12 text-center ">
+<h6 class="mb-2">Scroll table to view more</h6>
+</div>
+</div>
+<div class="col-sm-12">
+<div class="table-responsive-sm">
+<table class="table table-hover table-dark table-bordered">
+<thead class="thead">
+<tr>
+<th scope="col">Country</th>
+<th scope="col">Total</th>
+<th scope="col">Recovered</th>
+<th scope="col">Dead</th>
+<th scope="col">Added today</th>
+</tr>
+</thead>
+<tbody id="table-row">
+<!-- <tr id="LoadingDiv">
+<td>Loading..</td>
+<td>Loading..</td>
+<td>Loading..</td>
+<td>Loading..</td>
+</tr> -->
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="row mt-5 mb-0">
+<div class="col-sm-12">
+<h4 class="text-center info-title">  Data for <span id="byGraphdata">Loading..</span> By Graph</h4>
+</div>
+</div>
+<div class="row" id="Graph">
+<div class="col-sm-12">
+<div id="chart-container" class="chart-container"
+style="position: relative; height:300px;margin:0 auto;">
+<p class="text-center">Loading Graph...</p>
+<canvas id="covidCasesChart"></canvas>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-		<!-- FAQs -->
-		<section class="mt-5 mb-5 faq-section" id="FAQ">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<h2 class="text-center info-title">FAQs</h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-12 mt-2 mb-0">
-						<div id="accordion_search_bar_container">
-							<input type="search" id="accordion_search_bar" placeholder="Search for a question here..." />
-						</div>
-					</div>
-				</div>
-				<div class="row noRelult">
-					<div class="col-sm-12 text-center">
-						No result.
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-12">
-						<div id="accordion">
-							<div class="card">
-								<div class="card-header" id="collapse3">
-									<button class="btn btn-link " data-toggle="collapse" data-target="#collapse3"
-										aria-expanded="true" aria-controls="collapse3">
-										<h6 class="mb-0">
-											Can COVID-19 virus be transmitted in areas with hot and humid climates?
-										</h6>
-									</button>
-								</div>
-								<div id="collapse3" class="collapse show" aria-labelledby="collapse3"
-									data-parent="#accordion">
-									<div class="card-body">
-										<p>
-											Yes. It can be transmitted in areas with hot and humid climates.
-										</p>
-									</div>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-header" id="headingOne">
-									<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
-										aria-expanded="true" aria-controls="collapseOne">
-										<h6 class="mb-0">
-											Does exposing yourself to the sun or to temperatures higher than 25C degrees
-											prevent
-											the coronavirus disease (COVID-19) ?
-										</h6>
-									</button>
-								</div>
+<!-- FAQs -->
+<section class="mt-5 mb-5 faq-section" id="FAQ">
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<h2 class="text-center info-title">FAQs</h2>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12 mt-2 mb-0">
+<div id="accordion_search_bar_container">
+<input type="search" id="accordion_search_bar" placeholder="Search for a question here..." />
+</div>
+</div>
+</div>
+<div class="row noRelult">
+<div class="col-sm-12 text-center">
+No result.
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="accordion">
+<div class="card">
+<div class="card-header" id="collapse3">
+<button class="btn btn-link " data-toggle="collapse" data-target="#collapse3"
+aria-expanded="true" aria-controls="collapse3">
+<h6 class="mb-0">
+Can COVID-19 virus be transmitted in areas with hot and humid climates?
+</h6>
+</button>
+</div>
+<div id="collapse3" class="collapse show" aria-labelledby="collapse3"
+data-parent="#accordion">
+<div class="card-body">
+<p>
+Yes. It can be transmitted in areas with hot and humid climates.
+</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header" id="headingOne">
+<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+aria-expanded="true" aria-controls="collapseOne">
+<h6 class="mb-0">
+Does exposing yourself to the sun or to temperatures higher than 25C degrees
+prevent
+the coronavirus disease (COVID-19) ?
+</h6>
+</button>
+</div>
 
-								<div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-									data-parent="#accordion">
-									<div class="card-body">
-										<p>
-											No, it does not. You can get infected even in warm climates.
-										</p>
-									</div>
-								</div>
-							</div>
-
-
-							<div class="card">
-								<div class="card-header" id="collapse2">
-									<button class="btn btn-link collapsed" data-toggle="collapse"
-										data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
-										<h6 class="mb-0">
-											Does COVID-19 only affects older/elderly people and has no effect on younger
-											people?
-										</h6>
-									</button>
-								</div>
-								<div id="collapse2" class="collapse" aria-labelledby="collapse2"
-									data-parent="#accordion">
-									<div class="card-body">
-										<p>
-											No, it does not. People of any age group can get infected by the virus.
-										</p>
-									</div>
-								</div>
-							</div>
+<div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+data-parent="#accordion">
+<div class="card-body">
+<p>
+No, it does not. You can get infected even in warm climates.
+</p>
+</div>
+</div>
+</div>
 
 
+<div class="card">
+<div class="card-header" id="collapse2">
+<button class="btn btn-link collapsed" data-toggle="collapse"
+data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+<h6 class="mb-0">
+Does COVID-19 only affects older/elderly people and has no effect on younger
+people?
+</h6>
+</button>
+</div>
+<div id="collapse2" class="collapse" aria-labelledby="collapse2"
+data-parent="#accordion">
+<div class="card-body">
+<p>
+No, it does not. People of any age group can get infected by the virus.
+</p>
+</div>
+</div>
+</div>
 
-							<div class="card">
-								<div class="card-header" id="collapse4">
-									<button class="btn btn-link" data-toggle="collapse" data-target="#collapse4"
-										aria-expanded="true" aria-controls="collapse4">
-										<h6 class="mb-0">
-											Does taking a hot water bath prevent the new coronavirus from infecting you?
-										</h6>
-									</button>
-								</div>
-								<div id="collapse4" class="collapse" aria-labelledby="collapse4"
-									data-parent="#accordion">
-									<div class="card-body">
-										<p>
-											No, it does not. You can get infected even if you have a hot water bath.
-										</p>
-									</div>
-								</div>
-							</div>
 
-							<div class="card">
-								<div class="card-header" id="collapse5">
-									<button class="btn btn-link" data-toggle="collapse" data-target="#collapse5"
-										aria-expanded="true" aria-controls="collapse5">
-										<h6 class="mb-0">
-											Can the new coronavirus be transmitted through mosquito bites?
-										</h6>
-									</button>
-								</div>
-								<div id="collapse5" class="collapse" aria-labelledby="collapse5"
-									data-parent="#accordion">
-									<div class="card-body">
-										<p>
-											No.
-										</p>
-									</div>
-								</div>
-							</div>
 
-							<div class="card">
-								<div class="card-header" id="collapse6">
-									<button class="btn btn-link" data-toggle="collapse" data-target="#collapse6"
-										aria-expanded="true" aria-controls="collapse6">
-										<h6 class="mb-0">
-											Can spraying alcohol or chlorine all over your body kill the new
-											coronavirus?
-										</h6>
-									</button>
-								</div>
-								<div id="collapse6" class="collapse" aria-labelledby="collapse6"
-									data-parent="#accordion">
-									<div class="card-body">
-										<p>
-											No.
-										</p>
-									</div>
-								</div>
-							</div>
+<div class="card">
+<div class="card-header" id="collapse4">
+<button class="btn btn-link" data-toggle="collapse" data-target="#collapse4"
+aria-expanded="true" aria-controls="collapse4">
+<h6 class="mb-0">
+Does taking a hot water bath prevent the new coronavirus from infecting you?
+</h6>
+</button>
+</div>
+<div id="collapse4" class="collapse" aria-labelledby="collapse4"
+data-parent="#accordion">
+<div class="card-body">
+<p>
+No, it does not. You can get infected even if you have a hot water bath.
+</p>
+</div>
+</div>
+</div>
 
-							<div class="card">
-								<div class="card-header" id="collapse7">
-									<button class="btn btn-link" data-toggle="collapse" data-target="#collapse7"
-										aria-expanded="true" aria-controls="collapse7">
-										<h6 class="mb-0">
-											Are antibiotics effective in preventing and treating the new coronavirus?
-										</h6>
-									</button>
-								</div>
-								<div id="collapse7" class="collapse" aria-labelledby="collapse7"
-									data-parent="#accordion">
-									<div class="card-body">
-										<p>
-											No. Till date, they are not.
-										</p>
-									</div>
-								</div>
-							</div>
+<div class="card">
+<div class="card-header" id="collapse5">
+<button class="btn btn-link" data-toggle="collapse" data-target="#collapse5"
+aria-expanded="true" aria-controls="collapse5">
+<h6 class="mb-0">
+Can the new coronavirus be transmitted through mosquito bites?
+</h6>
+</button>
+</div>
+<div id="collapse5" class="collapse" aria-labelledby="collapse5"
+data-parent="#accordion">
+<div class="card-body">
+<p>
+No.
+</p>
+</div>
+</div>
+</div>
 
-							<div class="card">
-								<div class="card-header" id="collapse8">
-									<button class="btn btn-link" data-toggle="collapse" data-target="#collapse8"
-										aria-expanded="true" aria-controls="collapse8">
-										<h6 class="mb-0">
-											Can COVID-19 be passed by shaking hands and by touching your eyes, nose and
-											mouth?
-										</h6>
-									</button>
-								</div>
-								<div id="collapse8" class="collapse" aria-labelledby="collapse8"
-									data-parent="#accordion">
-									<div class="card-body">
-										<p>
-											Yes!
-										</p>
-									</div>
-								</div>
-							</div>
+<div class="card">
+<div class="card-header" id="collapse6">
+<button class="btn btn-link" data-toggle="collapse" data-target="#collapse6"
+aria-expanded="true" aria-controls="collapse6">
+<h6 class="mb-0">
+Can spraying alcohol or chlorine all over your body kill the new
+coronavirus?
+</h6>
+</button>
+</div>
+<div id="collapse6" class="collapse" aria-labelledby="collapse6"
+data-parent="#accordion">
+<div class="card-body">
+<p>
+No.
+</p>
+</div>
+</div>
+</div>
 
-							<div class="card">
-								<div class="card-header" id="collapse9">
-									<button class="btn btn-link" data-toggle="collapse" data-target="#collapse9"
-										aria-expanded="true" aria-controls="collapse9">
-										<h6 class="mb-0">
-											Is wearing rubber gloves while out in public effective in preventing
-											COVID-19?
-										</h6>
-									</button>
-								</div>
-								<div id="collapse9" class="collapse" aria-labelledby="collapse9"
-									data-parent="#accordion">
-									<div class="card-body">
-										<p>
-											No!
-										</p>
-									</div>
-								</div>
-							</div>
+<div class="card">
+<div class="card-header" id="collapse7">
+<button class="btn btn-link" data-toggle="collapse" data-target="#collapse7"
+aria-expanded="true" aria-controls="collapse7">
+<h6 class="mb-0">
+Are antibiotics effective in preventing and treating the new coronavirus?
+</h6>
+</button>
+</div>
+<div id="collapse7" class="collapse" aria-labelledby="collapse7"
+data-parent="#accordion">
+<div class="card-body">
+<p>
+No. Till date, they are not.
+</p>
+</div>
+</div>
+</div>
 
-							<div class="card">
-								<div class="card-header" id="collapse10">
-									<button class="btn btn-link" data-toggle="collapse" data-target="#collapse10"
-										aria-expanded="true" aria-controls="collapse10">
-										<h6 class="mb-0">
-											Is COVID-19 airborne?
-										</h6>
-									</button>
-								</div>
-								<div id="collapse10" class="collapse" aria-labelledby="collapse10"
-									data-parent="#accordion">
-									<div class="card-body">
-										<p>
-											No, but can it be transmitted through sneezing and coughing. That's why
-											wearing a
-											mask is important.
-											Check this site to know more about <a rel="nofollow" target="_blank"
-												href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/when-and-how-to-use-masks">
-												selecting a mask</a>
-										</p>
-									</div>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-header" id="collapse11">
-									<button class="btn btn-link" data-toggle="collapse" data-target="#collapse11"
-										aria-expanded="true" aria-controls="collapse11">
-										<h6 class="mb-0">
-											When was the first patient of COVID-19 identified?
-										</h6>
-									</button>
-								</div>
-								<div id="collapse11" class="collapse " aria-labelledby="collapse11"
-									data-parent="#accordion">
-									<div class="card-body">
-										<p>
-											December, 2019.
-										</p>
-									</div>
-								</div>
-							</div>
+<div class="card">
+<div class="card-header" id="collapse8">
+<button class="btn btn-link" data-toggle="collapse" data-target="#collapse8"
+aria-expanded="true" aria-controls="collapse8">
+<h6 class="mb-0">
+Can COVID-19 be passed by shaking hands and by touching your eyes, nose and
+mouth?
+</h6>
+</button>
+</div>
+<div id="collapse8" class="collapse" aria-labelledby="collapse8"
+data-parent="#accordion">
+<div class="card-body">
+<p>
+Yes!
+</p>
+</div>
+</div>
+</div>
 
-							<div class="card">
-								<div class="card-header" id="collapse12">
-									<button class="btn btn-link" data-toggle="collapse" data-target="#collapse12"
-										aria-expanded="true" aria-controls="collapse12">
-										<h6 class="mb-0">
-											What is Covid-19?
-										</h6>
-									</button>
-								</div>
+<div class="card">
+<div class="card-header" id="collapse9">
+<button class="btn btn-link" data-toggle="collapse" data-target="#collapse9"
+aria-expanded="true" aria-controls="collapse9">
+<h6 class="mb-0">
+Is wearing rubber gloves while out in public effective in preventing
+COVID-19?
+</h6>
+</button>
+</div>
+<div id="collapse9" class="collapse" aria-labelledby="collapse9"
+data-parent="#accordion">
+<div class="card-body">
+<p>
+No!
+</p>
+</div>
+</div>
+</div>
 
-								<div id="collapse12" class="collapse " aria-labelledby="collapse12"
-									data-parent="#accordion">
-									<div class="card-body">
-										<p>
-											Coronavirus disease (COVID-19) is an infectious disease caused
-											by a new virus.
-										</p>
-									</div>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-header" id="collapse13">
-									<button class="btn btn-link collapsed" data-toggle="collapse"
-										data-target="#collapse13" aria-expanded="false" aria-controls="collapse13">
-										<h6 class="mb-0">
-											What are the symptoms of Covid-19?
-										</h6>
-									</button>
-								</div>
-								<div id="collapse13" class="collapse" aria-labelledby="collapse13"
-									data-parent="#accordion">
-									<div class="card-body">
-										<p> The disease causes respiratory illness (like the flu) with
-											symptoms such as a cough, fever, and in more severe cases,
-											difficulty breathing.
-										</p>
-									</div>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-header" id="collapse14">
-									<button class="btn btn-link collapsed" data-toggle="collapse"
-										data-target="#collapse14" aria-expanded="false" aria-controls="collapse14">
-										<h6 class="mb-0">
-											How do you protect yourself?
-										</h6>
-									</button>
-								</div>
-								<div id="collapse14" class="collapse" aria-labelledby="collapse14"
-									data-parent="#accordion">
-									<div class="card-body">
-										<p>
-											You can protect yourself by washing your hands frequently,
-											avoiding touching your face, and avoiding close contact (1 meter
-											or 3 feet) with people who are unwell.
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+<div class="card">
+<div class="card-header" id="collapse10">
+<button class="btn btn-link" data-toggle="collapse" data-target="#collapse10"
+aria-expanded="true" aria-controls="collapse10">
+<h6 class="mb-0">
+Is COVID-19 airborne?
+</h6>
+</button>
+</div>
+<div id="collapse10" class="collapse" aria-labelledby="collapse10"
+data-parent="#accordion">
+<div class="card-body">
+<p>
+No, but can it be transmitted through sneezing and coughing. That's why
+wearing a
+mask is important.
+Check this site to know more about <a rel="nofollow" target="_blank"
+href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/when-and-how-to-use-masks">
+selecting a mask</a>
+</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header" id="collapse11">
+<button class="btn btn-link" data-toggle="collapse" data-target="#collapse11"
+aria-expanded="true" aria-controls="collapse11">
+<h6 class="mb-0">
+When was the first patient of COVID-19 identified?
+</h6>
+</button>
+</div>
+<div id="collapse11" class="collapse " aria-labelledby="collapse11"
+data-parent="#accordion">
+<div class="card-body">
+<p>
+December, 2019.
+</p>
+</div>
+</div>
+</div>
 
-		<!-- Modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-			aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Contributors!</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
+<div class="card">
+<div class="card-header" id="collapse12">
+<button class="btn btn-link" data-toggle="collapse" data-target="#collapse12"
+aria-expanded="true" aria-controls="collapse12">
+<h6 class="mb-0">
+What is Covid-19?
+</h6>
+</button>
+</div>
 
-						<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-							<div class="carousel-inner">
-								<div class="carousel-item active">
+<div id="collapse12" class="collapse " aria-labelledby="collapse12"
+data-parent="#accordion">
+<div class="card-body">
+<p>
+Coronavirus disease (COVID-19) is an infectious disease caused
+by a new virus.
+</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header" id="collapse13">
+<button class="btn btn-link collapsed" data-toggle="collapse"
+data-target="#collapse13" aria-expanded="false" aria-controls="collapse13">
+<h6 class="mb-0">
+What are the symptoms of Covid-19?
+</h6>
+</button>
+</div>
+<div id="collapse13" class="collapse" aria-labelledby="collapse13"
+data-parent="#accordion">
+<div class="card-body">
+<p> The disease causes respiratory illness (like the flu) with
+symptoms such as a cough, fever, and in more severe cases,
+difficulty breathing.
+</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header" id="collapse14">
+<button class="btn btn-link collapsed" data-toggle="collapse"
+data-target="#collapse14" aria-expanded="false" aria-controls="collapse14">
+<h6 class="mb-0">
+How do you protect yourself?
+</h6>
+</button>
+</div>
+<div id="collapse14" class="collapse" aria-labelledby="collapse14"
+data-parent="#accordion">
+<div class="card-body">
+<p>
+You can protect yourself by washing your hands frequently,
+avoiding touching your face, and avoiding close contact (1 meter
+or 3 feet) with people who are unwell.
+</p>
+</div>
+</div>
+</div>
 
-									<div class="team-card">
-										<div>
-											<div style="background-image: url('./images/Team/team1.jpg');"
-												class="image">
+<div class="card">
+<div class="card-header" id="collapse15">
+<button class="btn btn-link collapsed" data-toggle="collapse"
+data-target="#collapse15" aria-expanded="false" aria-controls="collapse15">
+<h6 class="mb-0">
+What is Community spread ?
+</h6>
+</button>
+</div>
 
-											</div>
+<div id="collapse15" class="collapse" aria-labelledby="collapse15"
+data-parent="#accordion">
+<div class="card-body">
+<p>
+Community spread means people have been infected with
+the virus in an area, including some who are not sure how or where they became infected.
+</p>
+</div>
+</div>
+</div>
 
-											<div class="card-body text-center">
-												<h5 class="card-title">Shriniwas</h5>
-												<p class="card-text"> Content Editor and Tester</p>
-											</div>
-										</div>
-									</div>
 
-								</div>
-								<div class="carousel-item">
 
-									<div class="team-card">
-										<div>
-											<div style="background-image: url('./images/Team/team3.jpg');"
-												class="image">
+<div class="card">
+<div class="card-header" id="collapse16">
+<button class="btn btn-link collapsed" data-toggle="collapse"
+data-target="#collapse16" aria-expanded="false" aria-controls="collapse16">
+<h6 class="mb-0">
+What cleaning products should I  use to protect	against COVID-19
+</h6>
+</button>
+</div>
 
-											</div>
+<div id="collapse16" class="collapse" aria-labelledby="collapse16"
+data-parent="#accordion">
+<div class="card-body">
+<p>
+Clean and disinfect frequently touched surfaces such as tables, doorknobs, light switches, countertops, handles, desks, phones, keyboards, toilets, faucets, and sinks.  If surfaces are dirty, clean them using detergent or soap and water prior to disinfection. To disinfect, most common EPA-registered household disinfectants will work. See CDC’s recommendations for household cleaning and disinfection.
+</p>
+</div>
+</div>
+</div>
 
-											<div class="card-body text-center">
-												<h5 class="card-title">Nigel</h5>
-												<p class="card-text"> Web Developer</p>
-											</div>
-										</div>
-									</div>
+<div class="card">
+<div class="card-header" id="collapse17">
+<button class="btn btn-link collapsed" data-toggle="collapse"
+data-target="#collapse17" aria-expanded="false" aria-controls="collapse17">
+<h6 class="mb-0">
+Should I be tested for COVID-19
+</h6>
+</button>
+</div>
 
-								</div>
-								<div class="carousel-item">
-									<div class="team-card">
-										<div>
-											<div style="background-image: url('./images/Team/team4.jpg');"
-												class="image">
+<div id="collapse17" class="collapse" aria-labelledby="collapse17"
+data-parent="#accordion">
+<div class="card-body">
+<p>
+Not everyone needs to be tested for COVID-19. For information about testing, see Testing for COVID-19.
 
-											</div>
+</p>
+</div>
+</div>
+</div>
 
-											<div class="card-body text-center">
-												<h5 class="card-title">Siona</h5>
-												<p class="card-text"> Web Developer</p>
-											</div>
-										</div>
-									</div>
 
-								</div>
-								<div class="carousel-item">
+<div class="card">
+<div class="card-header" id="collapse18">
+<button class="btn btn-link collapsed" data-toggle="collapse"
+data-target="#collapse18" aria-expanded="false" aria-controls="collapse18">
+<h6 class="mb-0">
+Who is at higher risk for serious illness from COVID-19 ?
+</h6>
+</button>
+</div>
 
-									<div class="team-card">
-										<div>
-											<div style="background-image: url('./images/Team/team2.jpg');"
-												class="image">
+<div id="collapse18" class="collapse" aria-labelledby="collapse18"
+data-parent="#accordion">
+<div class="card-body">
+<p>
+COVID-19 is a new disease and there is limited information regarding risk factors for severe disease. Based on currently available information and clinical expertise, <span id="imp">older adults and people of any age who have serious underlying medical conditions</span> might be at higher risk for severeillness from COVID-19.
+Based on what we know now, those at high-risk for severe illness from COVID-19 are:<br>
+<li>People aged 65 years and older</li>
+<li>People who live in a nursing home or long-term care facility</li>
+<br>
+People of all ages with underlying medical conditions, particularly if not well controlled, including:<br><br>	
+<li>People with chronic lung disease or moderate to severe asthma</li>
+<li>People who have serious heart conditions</li>
+<li>People who are immunocompromised</li>
+    <li>Many conditions can cause a person to be immunocompromised, including cancer treatment, smoking, bone marrow or organ transplantation, immune deficiencies, poorly controlled HIV or AIDS, and prolonged use of corticosteroids and other immune weakening medications</li>
+<li>People with severe obesity (body mass index [BMI] ≥40)
+<li>People with diabetes</li>
+<li>People with chronic kidney disease undergoing dialysis
+People with liver disease</li>
 
-											</div>
 
-											<div class="card-body text-center">
-												<h5 class="card-title">Carol</h5>
-												<p class="card-text"> Tester</p>
-											</div>
-										</div>
-									</div>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-								</div>
-							</div>
-							<a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-								data-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="sr-only">Previous</span>
-							</a>
-							<a class="carousel-control-next" href="#carouselExampleControls" role="button"
-								data-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="sr-only">Next</span>
-							</a>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="exampleModalLabel">Contributors!</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
 
-	</main>
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
-					<p class="text-center">Website developed by the
-						<!-- Button trigger modal -->
-						<a class="trigButton" data-toggle="modal" data-target="#exampleModal">
-							people
-						</a>, for the people!</p>
-					<p class="text-center">Contact the <a href="https://nigeldcruz.in/">developer here</a> if you have
-						any suggestions or any feature request.</p>
-					<p class="text-center"> &copy; 2020</p>
-				</div>
-			</div>
-		</div>
-	</footer>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<div class="carousel-inner">
+<div class="carousel-item active">
 
-	<script src="js/library/all.min.js"></script>
-	<script src="js/main.min.js"></script>
-	<!-- <script src="js/main.js"></script> -->
+<div class="team-card">
+<div>
+<div style="background-image: url('./images/Team/team1.jpg');"
+class="image">
+
+</div>
+
+<div class="card-body text-center">
+<h5 class="card-title">Shriniwas</h5>
+<p class="card-text"> Content Editor and Tester</p>
+</div>
+</div>
+</div>
+
+</div>
+<div class="carousel-item">
+
+<div class="team-card">
+<div>
+<div style="background-image: url('./images/Team/team3.jpg');"
+class="image">
+
+</div>
+
+<div class="card-body text-center">
+<h5 class="card-title">Nigel</h5>
+<p class="card-text"> Web Developer</p>
+</div>
+</div>
+</div>
+
+</div>
+<div class="carousel-item">
+<div class="team-card">
+<div>
+<div style="background-image: url('./images/Team/team4.jpg');"
+class="image">
+
+</div>
+
+<div class="card-body text-center">
+<h5 class="card-title">Siona</h5>
+<p class="card-text"> Web Developer</p>
+</div>
+</div>
+</div>
+
+</div>
+<div class="carousel-item">
+
+<div class="team-card">
+<div>
+<div style="background-image: url('./images/Team/team2.jpg');"
+class="image">
+
+</div>
+
+<div class="card-body text-center">
+<h5 class="card-title">Carol</h5>
+<p class="card-text"> Tester</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+data-slide="prev">
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" href="#carouselExampleControls" role="button"
+data-slide="next">
+<span class="carousel-control-next-icon" aria-hidden="true"></span>
+<span class="sr-only">Next</span>
+</a>
+</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+
+</main>
+<footer>
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<p class="text-center">Website developed by the
+<!-- Button trigger modal -->
+<a class="trigButton" data-toggle="modal" data-target="#exampleModal">
+people
+</a>, for the people!</p>
+<p class="text-center">Contact the <a href="https://nigeldcruz.in/">developer here</a> if you have
+any suggestions or any feature request.</p>
+<p class="text-center"> &copy; 2020</p>
+</div>
+</div>
+</div>
+</footer>
+
+<script src="js/library/all.min.js"></script>
+<script src="js/main.min.js"></script>
+<!-- <script src="js/main.js"></script> -->
 </body>
 
 </html>
