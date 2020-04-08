@@ -478,3 +478,5 @@ $('#selectCountry').on('change', function () {
 	renderNewData(selectCountry.value);
 
 });
+
+
